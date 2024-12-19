@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="base-domain" />
+        <module name="document-retrieval-infra" />
+        <module name="document-retrieval-util" />
+        <module name="base-util" />
+        <module name="base-service" />
+        <module name="document-retrieval-domain" />
+        <module name="base-web" />
+        <module name="base-api" />
+        <module name="document-retrieval-rpc" />
+        <module name="base-bootstrap" />
+        <module name="document-retrieval-bootstrap" />
+        <module name="base-manager" />
+        <module name="document-retrieval-manager" />
+        <module name="document-retrieval-service" />
+        <module name="base-infra" />
+        <module name="document-retrieval-api" />
+        <module name="base-rpc" />
+        <module name="document-retrieval-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="document-retrieval-boostrap" target="17" />
+      <module name="document-retrieval-infrastructure" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="base-api" options="" />
+      <module name="base-bootstrap" options="" />
+      <module name="base-domain" options="" />
+      <module name="base-infra" options="" />
+      <module name="base-manager" options="" />
+      <module name="base-rpc" options="" />
+      <module name="base-service" options="" />
+      <module name="base-util" options="" />
+      <module name="base-web" options="" />
+      <module name="document-retrieval" options="" />
+      <module name="document-retrieval-api" options="" />
+      <module name="document-retrieval-boostrap" options="" />
+      <module name="document-retrieval-rpc" options="" />
+      <module name="document-retrieval-web" options="" />
+    </option>
+  </component>
+</project>

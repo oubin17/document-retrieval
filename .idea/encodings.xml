@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/aggregate/manager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aggregate/manager/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aggregate/service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/aggregate/service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/rpc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/rpc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bootstrap/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bootstrap/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core/domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core/domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core/infra/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core/infra/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/util/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/util/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

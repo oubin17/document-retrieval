@@ -1,0 +1,34 @@
+package com.odk.baseapi.vo;
+
+import lombok.Data;
+
+/**
+ * PermissionVO
+ *
+ * @description:
+ * @version: 1.0
+ * @author: oubin on 2024/11/9
+ */
+@Data
+public class PermissionVO {
+
+    /**
+     * 权限ID
+     */
+    private Long id;
+
+    /**
+     * 权限码
+     */
+    private String permissionCode;
+
+    /**
+     * 权限名称
+     */
+    private String permissionName;
+
+    /**
+     * 权限状态
+     */
+    private String status;
+}

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3e48a4d6-fb35-4f40-8922-c911c87baaab" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Kotlin Class" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main1" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$USER_HOME$/software/maven/apache-maven-3.9.9" />
+        <option name="userSettingsFile" value="$USER_HOME$/software/maven/apache-maven-3.9.9/conf/settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2oIBJV3blQLutizISWMJcBCHX0j" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "/Users/oubin/document/shsr/back_project/document-retrieval/pom.xml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.12414467",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bootstrap/src/main/resources" />
+      <recent name="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice" />
+      <recent name="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/template" />
+      <recent name="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/aggregate" />
+      <recent name="$PROJECT_DIR$/core" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/bootstrap/src/main" />
+      <recent name="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.odk.baseweb" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.odk.baseweb" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.OdkBootstrapApplication (1)">
+    <configuration name="generated-requests | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="6" requestIdentifier="#6" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="BaseTemplateApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="document-retrieval" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.odk.basetemplate.BaseTemplateApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.odk.basetemplate.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BootstrapApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="base-web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.odk.baseweb.BootstrapApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.odk.baseweb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OdkBootstrapApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="document-retrieval-bootstrap" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.odk.basebootstrap.OdkBootstrapApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.odk.basebootstrap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OdkBootstrapApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="document-retrieval-boostrap" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.odk.basebootstrap.OdkBootstrapApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.odk.basebootstrap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="base-web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.odk.baseweb.WebApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.OdkBootstrapApplication (1)" />
+        <item itemvalue="Spring Boot.OdkBootstrapApplication" />
+        <item itemvalue="Spring Boot.BootstrapApplication (1)" />
+        <item itemvalue="Spring Boot.BaseTemplateApplication" />
+        <item itemvalue="HTTP Request.generated-requests | #6" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3e48a4d6-fb35-4f40-8922-c911c87baaab" name="Changes" comment="" />
+      <created>1730547138993</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730547138993</updated>
+      <workItem from="1730547140113" duration="1487000" />
+      <workItem from="1730548636455" duration="966000" />
+      <workItem from="1730549610832" duration="1240000" />
+      <workItem from="1730550859865" duration="4672000" />
+      <workItem from="1730642943739" duration="3606000" />
+      <workItem from="1730722062352" duration="10102000" />
+      <workItem from="1730808799465" duration="238000" />
+      <workItem from="1730809054862" duration="12586000" />
+      <workItem from="1730893880333" duration="12048000" />
+      <workItem from="1730906574593" duration="2423000" />
+      <workItem from="1730940918961" duration="7197000" />
+      <workItem from="1730966688930" duration="612000" />
+      <workItem from="1730981999678" duration="4716000" />
+      <workItem from="1730992232307" duration="1490000" />
+      <workItem from="1731027890139" duration="15002000" />
+      <workItem from="1731054666126" duration="87000" />
+      <workItem from="1731054774390" duration="6513000" />
+      <workItem from="1731106752656" duration="8280000" />
+      <workItem from="1731329251297" duration="788000" />
+      <workItem from="1731330337177" duration="6597000" />
+      <workItem from="1731497315144" duration="1815000" />
+      <workItem from="1731584605406" duration="10709000" />
+      <workItem from="1731598791444" duration="8000" />
+      <workItem from="1731936837671" duration="7757000" />
+      <workItem from="1732016304744" duration="3231000" />
+      <workItem from="1732019656691" duration="640000" />
+      <workItem from="1732117095989" duration="89000" />
+      <workItem from="1732262359018" duration="1871000" />
+      <workItem from="1732604630194" duration="6349000" />
+      <workItem from="1732613989797" duration="22856000" />
+      <workItem from="1732683754566" duration="3285000" />
+      <workItem from="1732710749069" duration="1071000" />
+      <workItem from="1734617246441" duration="664000" />
+    </task>
+    <task id="LOCAL-00001" summary="修改主键生成策略">
+      <option name="closed" value="true" />
+      <created>1732676502991</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1732676502991</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/aggregate/manager" />
+      <path value="$PROJECT_DIR$/aggregate/service" />
+      <path value="$PROJECT_DIR$/app/api" />
+      <path value="$PROJECT_DIR$/app/rpc" />
+      <path value="$PROJECT_DIR$/app/web" />
+      <path value="$PROJECT_DIR$/bootstrap" />
+      <path value="$PROJECT_DIR$/core/domain" />
+      <path value="$PROJECT_DIR$/core/infra" />
+      <path value="$PROJECT_DIR$/util" />
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="修改主键生成策略" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改主键生成策略" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
