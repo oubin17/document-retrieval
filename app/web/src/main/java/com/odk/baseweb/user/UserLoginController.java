@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 public class UserLoginController {
 
-
     private UserLoginApi userLoginApi;
 
     @PostMapping("/login")
