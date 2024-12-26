@@ -3,9 +3,10 @@ package com.odk.baseweb.document;
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.document.DocumentApi;
 import com.odk.baseapi.request.document.DocumentUploadRequest;
-import com.odk.baseapi.vo.DocumentVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -33,12 +34,6 @@ public class DocumentController {
         request.setDirId(dirId);
         return documentApi.uploadDoc(request);
     }
-
-    @GetMapping("/getById")
-    public ServiceResponse<DocumentVO> getDocument(@RequestParam Long id) {
-        return documentApi.searchById(id);
-    }
-
 
     @Autowired
     public void setDocumentApi(DocumentApi documentApi) {

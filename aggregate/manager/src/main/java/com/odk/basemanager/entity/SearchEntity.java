@@ -1,16 +1,16 @@
-package com.odk.baseapi.vo;
+package com.odk.basemanager.entity;
 
 import lombok.Data;
 
 /**
- * DocumentVO
+ * SearchEntity
  *
  * @description:
  * @version: 1.0
- * @author: oubin on 2024/12/25
+ * @author: oubin on 2024/12/26
  */
 @Data
-public class DocumentVO {
+public class SearchEntity {
 
     private Long id;
 
@@ -38,5 +38,4 @@ public class DocumentVO {
      * 创建时间戳
      */
     private Long createTimeMill;
-
 }

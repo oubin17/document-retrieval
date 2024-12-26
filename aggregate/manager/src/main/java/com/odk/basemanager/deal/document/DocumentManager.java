@@ -51,14 +51,13 @@ public class DocumentManager {
         FileUtil.checkAndCreateFilePath(baseFilePath);
         transactionTemplate.executeWithoutResult(transactionStatus -> {
             try {
-                //2.上传文件
+                //1.上传文件
                 FileUtil.saveFile(fullFilaPath, uploadDTO.getFileInputStream());
 
-                //1.获取文件内容
+                //2.获取文件内容
                 String docContents = FileUtil.getFileContents(fullFilaPath);
                 AssertUtil.isNotEmpty(docContents, "文件内容为空");
                 log.info("文件内容 {}", docContents);
-
 
                 //3.内容写到ES
                 documentDO.setId(mainId);

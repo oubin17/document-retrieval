@@ -3,6 +3,8 @@ package com.odk.basedomain.domain.es;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.io.Serial;
 
@@ -26,6 +28,7 @@ public class DocumentDO {
     /**
      * 文件名称
      */
+    @Field(type = FieldType.Keyword)
     private String fileName;
 
     /**
@@ -36,6 +39,7 @@ public class DocumentDO {
     /**
      * 文件内容
      */
+    @Field(type = FieldType.Text, analyzer = "ik_smart", searchAnalyzer = "ik_smart")
     private String fileContents;
 
     /**

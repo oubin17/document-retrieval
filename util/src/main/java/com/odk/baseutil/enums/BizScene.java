@@ -27,6 +27,7 @@ public enum BizScene {
     //文件相关
     DOC_UPLOAD("DOC_UPLOAD", "文件上传"),
 
+    SEARCH("SEARCH", "搜索"),
 
 
 
