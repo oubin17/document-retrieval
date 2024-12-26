@@ -2,9 +2,13 @@ package com.odk.baseweb.document;
 
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.document.DocumentApi;
+import com.odk.baseapi.request.document.DocumentUploadRequest;
 import com.odk.baseapi.vo.DocumentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * DocumentController
@@ -14,14 +18,20 @@ import org.springframework.web.bind.annotation.*;
  * @author: oubin on 2024/12/25
  */
 @RestController
-@RequestMapping("/document")
+@RequestMapping("/doc")
 public class DocumentController {
 
     private DocumentApi documentApi;
 
-    @PostMapping("/save")
-    public ServiceResponse<Boolean> saveDocument(@RequestParam Long id, @RequestParam String name) {
-        return documentApi.saveDocument(id, name);
+    @PostMapping("/upload")
+    public ServiceResponse<Long> uploadDocument(MultipartFile file, String dirId) throws IOException {
+        DocumentUploadRequest request = new DocumentUploadRequest();
+        request.setFileInputStream(file.getInputStream());
+        request.setFileName(file.getOriginalFilename());
+        request.setContentType(file.getContentType());
+        request.setFileSize(file.getSize() / 1024 + "K");
+        request.setDirId(dirId);
+        return documentApi.uploadDoc(request);
     }
 
     @GetMapping("/getById")

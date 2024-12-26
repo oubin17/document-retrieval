@@ -1,6 +1,7 @@
 package com.odk.baseapi.inter.document;
 
 import com.odk.base.vo.response.ServiceResponse;
+import com.odk.baseapi.request.document.DocumentUploadRequest;
 import com.odk.baseapi.vo.DocumentVO;
 
 /**
@@ -13,7 +14,7 @@ import com.odk.baseapi.vo.DocumentVO;
 public interface DocumentApi {
 
 
-    ServiceResponse<Boolean> saveDocument(Long id, String name);
+    ServiceResponse<Long> uploadDoc(DocumentUploadRequest docUploadRequest);
 
     ServiceResponse<DocumentVO> searchById(Long id);
 

@@ -24,6 +24,10 @@ public enum BizScene {
 
     ROLE_RELA_ADD("ROLE_RELA_ADD", "用户添加角色"),
 
+    //文件相关
+    DOC_UPLOAD("DOC_UPLOAD", "文件上传"),
+
+
 
 
     ;

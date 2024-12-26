@@ -65,7 +65,8 @@ public class UserQueryManager {
             throw new BizException(BizErrorCode.USER_STATUS_ERROR);
         }
         UserEntity userEntity = new UserEntity();
-        BeanUtils.copyProperties(userBaseDO, userEntity);
+        BeanUtils.copyProperties(userBaseDO.get(), userEntity);
+        userEntity.setUserId(userBaseDO.get().getId());
         return userEntity;
     }
 
