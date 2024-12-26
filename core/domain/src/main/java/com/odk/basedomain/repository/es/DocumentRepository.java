@@ -1,9 +1,9 @@
 package com.odk.basedomain.repository.es;
 
-import com.odk.basedomain.domain.es.DocumentDO;
+import com.odk.basedomain.model.es.DocumentDO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
-
-import java.util.List;
 
 /**
  * DocumentRepository
@@ -20,6 +20,6 @@ public interface DocumentRepository extends ElasticsearchRepository<DocumentDO, 
      * @param keyword
      * @return
      */
-    List<DocumentDO> searchByFileContentsContains(String keyword);
+    Page<DocumentDO> searchByFileContentsContains(String keyword, Pageable pageable);
 
 }

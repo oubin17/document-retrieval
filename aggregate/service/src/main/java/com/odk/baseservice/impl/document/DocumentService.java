@@ -6,7 +6,7 @@ import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.document.DocumentApi;
 import com.odk.baseapi.request.document.DocumentUploadRequest;
 import com.odk.baseapi.vo.DocumentVO;
-import com.odk.basedomain.domain.es.DocumentDO;
+import com.odk.basedomain.model.es.DocumentDO;
 import com.odk.basemanager.deal.document.DocumentManager;
 import com.odk.basemanager.dto.document.DocUploadDTO;
 import com.odk.baseservice.template.AbstractApiImpl;

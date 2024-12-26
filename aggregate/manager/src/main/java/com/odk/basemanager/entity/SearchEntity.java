@@ -2,6 +2,8 @@ package com.odk.basemanager.entity;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * SearchEntity
  *
@@ -35,7 +37,8 @@ public class SearchEntity {
     private String fullFilePath;
 
     /**
-     * 创建时间戳
+     * 创建时间
      */
-    private Long createTimeMill;
+    private LocalDateTime createTime;
+
 }

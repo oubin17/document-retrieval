@@ -1,6 +1,6 @@
 package com.odk.basedomain.repository.file;
 
-import com.odk.basedomain.domain.file.FileDO;
+import com.odk.basedomain.model.file.FileDO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

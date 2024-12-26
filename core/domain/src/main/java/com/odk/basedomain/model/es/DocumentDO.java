@@ -1,4 +1,4 @@
-package com.odk.basedomain.domain.es;
+package com.odk.basedomain.model.es;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -39,7 +39,7 @@ public class DocumentDO {
     /**
      * 文件内容
      */
-    @Field(type = FieldType.Text, analyzer = "ik_smart", searchAnalyzer = "ik_smart")
+    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")
     private String fileContents;
 
     /**

@@ -2,6 +2,8 @@ package com.odk.baseapi.vo;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * DocumentVO
  *
@@ -35,8 +37,8 @@ public class DocumentVO {
     private String fullFilePath;
 
     /**
-     * 创建时间戳
+     * 创建时间
      */
-    private Long createTimeMill;
+    private LocalDateTime createTime;
 
 }

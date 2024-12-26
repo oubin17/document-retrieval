@@ -1,4 +1,4 @@
-package com.odk.basedomain.domain.file;
+package com.odk.basedomain.model.user;
 
 import com.odk.base.dos.BaseDO;
 import jakarta.persistence.*;
@@ -10,23 +10,23 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.io.Serial;
 
 /**
- * FileDO
+ * UserIdentificationDO
  *
  * @description:
  * @version: 1.0
- * @author: oubin on 2024/12/26
+ * @author: oubin on 2024/11/4
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "t_file", indexes = {
-        @Index(name = "idx_file_name", columnList = "file_name")
+@Table(name = "t_user_identification", indexes = {
+        @Index(name = "idx_user_id", columnList = "user_id", unique = true)
 })
 @EntityListeners(AuditingEntityListener.class)
-public class FileDO extends BaseDO {
+public class UserIdentificationDO extends BaseDO {
 
     @Serial
-    private static final long serialVersionUID = 7924807458967180888L;
+    private static final long serialVersionUID = -7115218095274721902L;
 
     @Id
     @GeneratedValue(generator = "user-uuid")
@@ -34,26 +34,22 @@ public class FileDO extends BaseDO {
     private Long id;
 
     /**
-     * 文件名称
+     * 用户ID
      */
-    @Column(name = "file_name")
-    private String fileName;
+    @Column(name = "user_id")
+    private Long userId;
 
     /**
-     * 文件类型
+     * 认证类型
+     * {@link com.odk.base.enums.user.IdentificationTypeEnum}
      */
-    @Column(name = "content_type")
-    private String contentType;
+    @Column(name = "identify_type")
+    private String identifyType;
 
     /**
-     * 文件大小
+     * 认证值
      */
-    @Column(name = "file_size")
-    private String fileSize;
+    @Column(name = "identify_value")
+    private String identifyValue;
 
-    /**
-     * 文件全路径
-     */
-    @Column(name = "full_file_path")
-    private String fullFilePath;
 }
