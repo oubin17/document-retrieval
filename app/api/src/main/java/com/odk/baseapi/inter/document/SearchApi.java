@@ -5,6 +5,8 @@ import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.request.document.SearchRequest;
 import com.odk.baseapi.vo.DocumentVO;
 
+import java.util.List;
+
 /**
  * SearchApi
  *
@@ -15,5 +17,12 @@ import com.odk.baseapi.vo.DocumentVO;
 public interface SearchApi {
 
     ServiceResponse<PageResponse<DocumentVO>> search(SearchRequest searchRequest);
+
+    /**
+     * 常用搜索
+     *
+     * @return
+     */
+    ServiceResponse<List<String>> commonSearch();
 
 }

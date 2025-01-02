@@ -1,5 +1,6 @@
 package com.odk.basedomain.domain;
 
+import com.odk.basedomain.domain.inter.SearchDomain;
 import com.odk.basedomain.model.es.DocumentDO;
 import com.odk.basedomain.repository.es.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;

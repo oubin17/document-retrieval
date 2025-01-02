@@ -1,12 +1,13 @@
 package com.odk.baseweb.document;
 
+import com.odk.base.vo.response.PageResponse;
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.document.DocumentApi;
+import com.odk.baseapi.request.document.DocumentSearchRequest;
 import com.odk.baseapi.request.document.DocumentUploadRequest;
+import com.odk.baseapi.vo.FileVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -24,6 +25,25 @@ public class DocumentController {
 
     private DocumentApi documentApi;
 
+    /**
+     * 根据文件名称查找文件列表
+     *
+     * @param searchRequest
+     * @return
+     */
+    @PostMapping("/search")
+    public ServiceResponse<PageResponse<FileVO>> queryByFileName(@RequestBody DocumentSearchRequest searchRequest) {
+        return documentApi.searchByCondition(searchRequest);
+    }
+
+    /**
+     * 文件上传
+     *
+     * @param file
+     * @param dirId
+     * @return
+     * @throws IOException
+     */
     @PostMapping("/upload")
     public ServiceResponse<Long> uploadDocument(MultipartFile file, String dirId) throws IOException {
         DocumentUploadRequest request = new DocumentUploadRequest();
@@ -33,6 +53,11 @@ public class DocumentController {
         request.setFileSize(file.getSize() / 1024 + "K");
         request.setDirId(dirId);
         return documentApi.uploadDoc(request);
+    }
+
+    @DeleteMapping()
+    public ServiceResponse<Boolean> deleteDocument(@RequestParam Long docId) {
+        return documentApi.deleteDoc(docId);
     }
 
     @Autowired

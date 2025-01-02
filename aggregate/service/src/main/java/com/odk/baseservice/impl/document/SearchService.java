@@ -11,6 +11,7 @@ import com.odk.basemanager.deal.document.SearchManager;
 import com.odk.basemanager.entity.SearchEntity;
 import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.enums.BizScene;
+import org.apache.commons.compress.utils.Lists;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,6 +59,24 @@ public class SearchService extends AbstractApiImpl implements SearchApi {
             }
 
         });
+    }
+
+    @Override
+    public ServiceResponse<List<String>> commonSearch() {
+        List<String> commSearchList = Lists.newArrayList();
+        commSearchList.add("货币政策");
+        commSearchList.add("外汇储备经营管理");
+        commSearchList.add("金融科技");
+        commSearchList.add("法律法规");
+        commSearchList.add("流动和保值增值");
+
+        commSearchList.add("中央经济工作会议");
+        commSearchList.add("中央金融工作会议");
+        commSearchList.add("中国式现代化");
+        commSearchList.add("国家外汇管理局中央外汇业务中心");
+        commSearchList.add("“十四五”规划目标任务");
+        commSearchList.add("金融稳定");
+        return  ServiceResponse.valueOfSuccess(commSearchList);
     }
 
     @Autowired

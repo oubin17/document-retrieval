@@ -1,4 +1,4 @@
-package com.odk.basedomain.domain;
+package com.odk.basedomain.domain.inter;
 
 import com.odk.basedomain.model.es.DocumentDO;
 import org.springframework.data.domain.Page;

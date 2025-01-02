@@ -2,7 +2,7 @@ package com.odk.basemanager.deal.document;
 
 import com.odk.base.util.LocalDateTimeUtil;
 import com.odk.base.vo.response.PageResponse;
-import com.odk.basedomain.domain.SearchDomain;
+import com.odk.basedomain.domain.inter.SearchDomain;
 import com.odk.basedomain.model.es.DocumentDO;
 import com.odk.basedomain.repository.es.DocumentRepository;
 import com.odk.basemanager.entity.SearchEntity;
@@ -29,6 +29,7 @@ public class SearchManager {
 
     private SearchDomain searchDomain;
 
+
     public PageResponse<SearchEntity> search(String keyword, int pageNo, int pageSize) {
         PageRequest pageRequest = PageRequest.of(pageNo - 1, pageSize);
         Page<DocumentDO> documentDOS = searchDomain.searchByFileContentsContains(keyword, pageRequest);
@@ -38,7 +39,7 @@ public class SearchManager {
             searchEntity.setCreateTime(LocalDateTimeUtil.convertTimestampToLocalDateTime(documentDO.getCreateTimeMill()));
             return searchEntity;
         }).collect(Collectors.toList());
-        return PageResponse.of(collect, documentDOS.getTotalPages());
+        return PageResponse.of(collect, (int) documentDOS.getTotalElements());
     }
 
     @Autowired

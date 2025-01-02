@@ -47,7 +47,7 @@ public class WebConfig implements WebMvcConfigurer {
      * @return
      */
     private SaInterceptor saInterceptor() {
-        String[] noLoginCheck = new String[]{"/user/query/loginId", "/user/register", "/user/login", "/search"};
+        String[] noLoginCheck = new String[]{"/user/query/loginId", "/user/register", "/user/login", "/search/*"};
         return new SaInterceptor(handler -> {
             // 指定一条 match 规则
             SaRouter.match("/**")    // 拦截的 path 列表，可以写多个 */

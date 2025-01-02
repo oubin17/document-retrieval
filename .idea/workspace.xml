@@ -5,38 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad473350-2da0-4de6-adca-9bf3dd873395" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/SearchDomain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/SearchDomainImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/entity/FileEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DocumentSearchRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/vo/FileVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/inter/FileDomain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/SearchManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/SearchManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/permission/PermissionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/permission/PermissionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/user/UserLoginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/user/UserLoginManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/user/UserQueryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/user/UserQueryManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/user/UserRegisterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/user/UserRegisterManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/entity/PermissionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/entity/PermissionEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/entity/SearchEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/entity/SearchEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DocumentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/vo/DocumentVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/vo/DocumentVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/es/DocumentDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/es/DocumentDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/file/FileDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/file/FileDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/permission/PermissionDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/permission/PermissionDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/permission/RolePermissionRelDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/permission/RolePermissionRelDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/permission/UserRoleDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/permission/UserRoleDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/permission/UserRoleRelDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/permission/UserRoleRelDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/user/UserAccessTokenDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/user/UserAccessTokenDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/user/UserBaseDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/user/UserBaseDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/user/UserIdentificationDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/user/UserIdentificationDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/es/DocumentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/es/DocumentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/SearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DocumentApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DocumentApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/SearchApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/SearchApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/response/UserQueryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/response/UserQueryResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/DocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/auth/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/auth/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/SearchDomain.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/inter/SearchDomain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/SearchDomainImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/SearchDomainImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/idgenerate/CustomIDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/idgenerate/CustomIDGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/es/DocumentDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/es/DocumentDO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/file/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/file/FileRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/permission/PermissionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/permission/PermissionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/permission/RolePermissionRelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/permission/RolePermissionRelRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/permission/UserRoleRelRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/permission/UserRoleRelRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/permission/UserRoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/permission/UserRoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/user/UserAccessTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/user/UserAccessTokenRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/user/UserBaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/user/UserBaseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/user/UserIdentificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/user/UserIdentificationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/BizScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/BizScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +49,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2qkdaP5ed0umrrRRcjdU8JI9oRH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -71,23 +60,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "editor.preferences.import",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -119,20 +109,33 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1735210570052</updated>
-      <workItem from="1735210571308" duration="6166000" />
+      <workItem from="1735210571308" duration="7600000" />
+      <workItem from="1735288055517" duration="2580000" />
+      <workItem from="1735694668120" duration="9512000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/SearchDomainImpl.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

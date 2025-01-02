@@ -6,20 +6,27 @@ import com.odk.base.exception.BizException;
 import com.odk.base.idgenerator.SnowflakeIdUtil;
 import com.odk.base.util.FileUtil;
 import com.odk.base.util.LocalDateTimeUtil;
+import com.odk.base.vo.response.PageResponse;
 import com.odk.basedomain.model.es.DocumentDO;
 import com.odk.basedomain.model.file.FileDO;
 import com.odk.basedomain.repository.es.DocumentRepository;
 import com.odk.basedomain.repository.file.FileRepository;
 import com.odk.basemanager.dto.document.DocUploadDTO;
+import com.odk.basemanager.entity.FileEntity;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import java.io.IOException;
 import java.time.ZoneOffset;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * DocumentManager
@@ -42,6 +49,33 @@ public class DocumentManager {
     @Value("${file.input.path}")
     private String baseFilePath;
 
+    public Boolean deleteDoc(Long docId) {
+        Optional<FileDO> byId = fileRepository.findById(docId);
+        AssertUtil.isTrue(byId.isPresent(), BizErrorCode.PARAM_ILLEGAL, "文件不存在");
+        documentRepository.deleteById(docId);
+        FileUtil.deleteFile(byId.get().getFullFilePath());
+        fileRepository.deleteById(docId);
+        return true;
+    }
+
+    public PageResponse<FileEntity> searchByCondition(String fileName, int pageNo, int pageSize) {
+        PageRequest pageRequest = PageRequest.of(pageNo - 1, pageSize);
+        Page<FileDO> searchResult;
+        if (StringUtils.isEmpty(fileName)) {
+            searchResult = fileRepository.findAll(pageRequest);
+        }else {
+            searchResult = fileRepository.findByFileNameLike(fileName, pageRequest);
+        }
+        PageResponse<FileEntity> documentEntityPageResponse = new PageResponse<>();
+        documentEntityPageResponse.setCount((int) searchResult.getTotalElements());
+        List<FileEntity> collect = searchResult.stream().map(fileDO -> {
+            FileEntity fileEntity = new FileEntity();
+            BeanUtils.copyProperties(fileDO, fileEntity);
+            return fileEntity;
+        }).toList();
+        documentEntityPageResponse.setPageList(collect);
+        return documentEntityPageResponse;
+    }
 
     public Long uploadDoc(DocUploadDTO uploadDTO) {
         long mainId = SnowflakeIdUtil.nextId();

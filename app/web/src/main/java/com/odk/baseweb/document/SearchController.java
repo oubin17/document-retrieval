@@ -8,6 +8,8 @@ import com.odk.baseapi.vo.DocumentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * SearchController
  *
@@ -24,6 +26,11 @@ public class SearchController {
     @PostMapping("/keyword")
     public ServiceResponse<PageResponse<DocumentVO>> search(@RequestBody SearchRequest searchRequest) {
         return searchApi.search(searchRequest);
+    }
+
+    @GetMapping("/common")
+    public ServiceResponse<List<String>> commonSearches() {
+        return searchApi.commonSearch();
     }
 
     @Autowired

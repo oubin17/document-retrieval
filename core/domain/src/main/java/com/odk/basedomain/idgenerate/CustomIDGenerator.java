@@ -18,6 +18,8 @@ public class CustomIDGenerator implements IdentifierGenerator {
 
     @Override
     public Serializable generate(SharedSessionContractImplementor session, Object object) throws MappingException {
+        //这里如果Object中的id不为空，则直接使用object中的id
+
         return SnowflakeIdUtil.nextId();
     }
 }
