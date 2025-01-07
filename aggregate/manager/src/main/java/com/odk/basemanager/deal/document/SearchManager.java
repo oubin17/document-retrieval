@@ -1,18 +1,18 @@
 package com.odk.basemanager.deal.document;
 
-import com.odk.base.util.LocalDateTimeUtil;
 import com.odk.base.vo.response.PageResponse;
 import com.odk.basedomain.domain.inter.SearchDomain;
-import com.odk.basedomain.model.es.DocumentDO;
-import com.odk.basedomain.repository.es.DocumentRepository;
+import com.odk.basedomain.model.file.FileDO;
+import com.odk.basedomain.model.file.FileSearchDO;
+import com.odk.basedomain.repository.file.FileRepository;
 import com.odk.basemanager.entity.SearchEntity;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -25,30 +25,31 @@ import java.util.stream.Collectors;
 @Service
 public class SearchManager {
 
-    private DocumentRepository documentRepository;
-
     private SearchDomain searchDomain;
+
+    private FileRepository fileRepository;
 
 
     public PageResponse<SearchEntity> search(String keyword, int pageNo, int pageSize) {
         PageRequest pageRequest = PageRequest.of(pageNo - 1, pageSize);
-        Page<DocumentDO> documentDOS = searchDomain.searchByFileContentsContains(keyword, pageRequest);
-        List<SearchEntity> collect = documentDOS.stream().map(documentDO -> {
+        PageResponse<FileSearchDO> documentDOS = searchDomain.searchByFileContentsContains(keyword, pageRequest);
+        List<SearchEntity> collect = documentDOS.getPageList().stream().map(fileSearchDO -> {
             SearchEntity searchEntity = new SearchEntity();
-            BeanUtils.copyProperties(documentDO, searchEntity);
-            searchEntity.setCreateTime(LocalDateTimeUtil.convertTimestampToLocalDateTime(documentDO.getCreateTimeMill()));
+            BeanUtils.copyProperties(fileSearchDO, searchEntity);
+            Optional<FileDO> fileDOOptional = fileRepository.findById(fileSearchDO.getFileId());
+            fileDOOptional.ifPresent(fileDO -> BeanUtils.copyProperties(fileDO, searchEntity));
             return searchEntity;
         }).collect(Collectors.toList());
-        return PageResponse.of(collect, (int) documentDOS.getTotalElements());
+        return PageResponse.of(collect, documentDOS.getCount());
+    }
+
+    @Autowired
+    public void setFileRepository(FileRepository fileRepository) {
+        this.fileRepository = fileRepository;
     }
 
     @Autowired
     public void setSearchDomain(SearchDomain searchDomain) {
         this.searchDomain = searchDomain;
-    }
-
-    @Autowired
-    public void setDocumentRepository(DocumentRepository documentRepository) {
-        this.documentRepository = documentRepository;
     }
 }

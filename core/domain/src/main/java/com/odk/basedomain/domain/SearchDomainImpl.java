@@ -1,13 +1,15 @@
 package com.odk.basedomain.domain;
 
+import com.odk.base.vo.response.PageResponse;
 import com.odk.basedomain.domain.inter.SearchDomain;
-import com.odk.basedomain.model.es.DocumentDO;
-import com.odk.basedomain.repository.es.DocumentRepository;
+import com.odk.basedomain.model.file.FileSearchDO;
+import com.odk.basedomain.repository.file.FileSearchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.client.elc.ElasticsearchTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * SearchDomainImpl
@@ -22,15 +24,19 @@ public class SearchDomainImpl implements SearchDomain {
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
 
-    private DocumentRepository documentRepository;
+    private FileSearchRepository fileSearchRepository;
 
     @Override
-    public Page<DocumentDO> searchByFileContentsContains(String keyword, Pageable pageable) {
-        return documentRepository.searchByFileContentsContains(keyword, pageable);
+    public PageResponse<FileSearchDO> searchByFileContentsContains(String keyword, Pageable pageable) {
+
+        List<FileSearchDO> byCondition = fileSearchRepository.findByCondition(keyword, pageable.getPageNumber(), pageable.getPageSize());
+        int count = fileSearchRepository.conditionCount(keyword);
+        return PageResponse.of(byCondition, count);
+
     }
 
     @Autowired
-    public void setDocumentRepository(DocumentRepository documentRepository) {
-        this.documentRepository = documentRepository;
+    public void setFileSearchRepository(FileSearchRepository fileSearchRepository) {
+        this.fileSearchRepository = fileSearchRepository;
     }
 }

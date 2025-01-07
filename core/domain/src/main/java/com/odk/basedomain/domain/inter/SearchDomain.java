@@ -1,7 +1,7 @@
 package com.odk.basedomain.domain.inter;
 
-import com.odk.basedomain.model.es.DocumentDO;
-import org.springframework.data.domain.Page;
+import com.odk.base.vo.response.PageResponse;
+import com.odk.basedomain.model.file.FileSearchDO;
 import org.springframework.data.domain.Pageable;
 
 /**
@@ -13,5 +13,5 @@ import org.springframework.data.domain.Pageable;
  */
 public interface SearchDomain {
 
-    Page<DocumentDO> searchByFileContentsContains(String keyword, Pageable pageable);
+    PageResponse<FileSearchDO> searchByFileContentsContains(String keyword, Pageable pageable);
 }

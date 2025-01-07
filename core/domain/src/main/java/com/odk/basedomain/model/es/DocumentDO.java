@@ -16,7 +16,7 @@ import java.io.Serial;
  * @author: oubin on 2024/12/25
  */
 @Data
-@Document(indexName = "document_1")
+@Document(indexName = "document_6")
 public class DocumentDO {
 
     @Serial
@@ -39,7 +39,7 @@ public class DocumentDO {
     /**
      * 文件内容
      */
-    @Field(type = FieldType.Text, analyzer = "ik_smart", searchAnalyzer = "ik_smart")
+    @Field(type = FieldType.Text, analyzer = "ik_max_word", searchAnalyzer = "ik_smart")
     private String fileContents;
 
     /**

@@ -5,27 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad473350-2da0-4de6-adca-9bf3dd873395" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/entity/FileEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DocumentSearchRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/vo/FileVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/inter/FileDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/entitymanager/CustomerRepositoryUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/file/FileSearchDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/file/FileSearchRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/SearchManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/SearchManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DocumentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/SearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DocumentApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DocumentApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/SearchApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/SearchApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/response/UserQueryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/response/UserQueryResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/DocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/auth/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/auth/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/SearchDomain.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/inter/SearchDomain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/SearchDomainImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/SearchDomainImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/inter/SearchDomain.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/inter/SearchDomain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/idgenerate/CustomIDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/idgenerate/CustomIDGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/es/DocumentDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/es/DocumentDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/file/FileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/file/FileRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/BizScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/BizScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -81,6 +71,11 @@
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.odk.basedomain.entitymanager" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="OdkBootstrapApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="document-retrieval-bootstrap" />
@@ -111,7 +106,10 @@
       <updated>1735210570052</updated>
       <workItem from="1735210571308" duration="7600000" />
       <workItem from="1735288055517" duration="2580000" />
-      <workItem from="1735694668120" duration="9512000" />
+      <workItem from="1735694668120" duration="14814000" />
+      <workItem from="1736165722875" duration="4605000" />
+      <workItem from="1736211538466" duration="20000" />
+      <workItem from="1736226634422" duration="10083000" />
     </task>
     <servers />
   </component>
@@ -128,16 +126,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java</url>
-          <line>114</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -56,7 +56,7 @@ public class DocumentController {
     }
 
     @DeleteMapping()
-    public ServiceResponse<Boolean> deleteDocument(@RequestParam Long docId) {
+    public ServiceResponse<Boolean> deleteDocument(@RequestParam("docId") Long docId) {
         return documentApi.deleteDoc(docId);
     }
 
