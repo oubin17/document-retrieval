@@ -4,8 +4,8 @@ import cn.dev33.satoken.stp.StpInterface;
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.permission.PermissionApi;
 import com.odk.baseapi.response.PermissionQueryResponse;
-import com.odk.baseapi.vo.PermissionVO;
-import com.odk.baseapi.vo.UserRoleVo;
+import com.odk.baseutil.entity.RolePermissionEntity;
+import com.odk.baseutil.entity.UserRoleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,15 +27,15 @@ public class StpInterfaceImpl implements StpInterface {
     @Override
     public List<String> getPermissionList(Object loginId, String loginType) {
         ServiceResponse<PermissionQueryResponse> response = permissionApi.userPermission((Long) loginId);
-        List<PermissionVO> permissions = response.getData().getPermissions();
-        return permissions.stream().map(PermissionVO::getPermissionCode).collect(Collectors.toList());
+        List<RolePermissionEntity> permissions = response.getData().getPermissions();
+        return permissions.stream().map(RolePermissionEntity::getPermissionCode).collect(Collectors.toList());
     }
 
     @Override
     public List<String> getRoleList(Object loginId, String loginType) {
         ServiceResponse<PermissionQueryResponse> response = permissionApi.userPermission((Long) loginId);
-        List<UserRoleVo> roles = response.getData().getRoles();
-        return roles.stream().map(UserRoleVo::getRoleCode).collect(Collectors.toList());
+        List<UserRoleEntity> roles = response.getData().getRoles();
+        return roles.stream().map(UserRoleEntity::getRoleCode).collect(Collectors.toList());
     }
 
     @Autowired

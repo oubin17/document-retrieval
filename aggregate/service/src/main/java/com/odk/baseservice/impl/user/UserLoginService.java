@@ -15,7 +15,7 @@ import com.odk.baseapi.response.UserLoginResponse;
 import com.odk.basemanager.deal.user.UserLoginManager;
 import com.odk.basemanager.deal.user.UserQueryManager;
 import com.odk.basemanager.dto.UserLoginDTO;
-import com.odk.basemanager.entity.UserEntity;
+import com.odk.baseutil.entity.UserEntity;
 import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.enums.BizScene;
 import lombok.extern.slf4j.Slf4j;

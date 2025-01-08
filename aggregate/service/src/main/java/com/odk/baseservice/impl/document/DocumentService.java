@@ -12,7 +12,7 @@ import com.odk.baseapi.vo.FileVO;
 import com.odk.basedomain.model.es.DocumentDO;
 import com.odk.basemanager.deal.document.DocumentManager;
 import com.odk.basemanager.dto.document.DocUploadDTO;
-import com.odk.basemanager.entity.FileEntity;
+import com.odk.baseutil.entity.FileEntity;
 import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.enums.BizScene;
 import org.springframework.beans.BeanUtils;
@@ -45,9 +45,12 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
 
             @Override
             protected Object convert(Object request) {
-                DocumentUploadRequest uploadRequest = (DocumentUploadRequest) request;
+                if (docUploadRequest.getDirId() == null) {
+                    //如果传空，默认在根目录上传
+                    docUploadRequest.setDirId(0L);
+                }
                 DocUploadDTO uploadDTO = new DocUploadDTO();
-                BeanUtils.copyProperties(uploadRequest, uploadDTO);
+                BeanUtils.copyProperties(docUploadRequest, uploadDTO);
                 return uploadDTO;
             }
 

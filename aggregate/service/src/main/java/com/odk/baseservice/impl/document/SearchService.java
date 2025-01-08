@@ -8,7 +8,7 @@ import com.odk.baseapi.inter.document.SearchApi;
 import com.odk.baseapi.request.document.SearchRequest;
 import com.odk.baseapi.vo.DocumentVO;
 import com.odk.basemanager.deal.document.SearchManager;
-import com.odk.basemanager.entity.SearchEntity;
+import com.odk.baseutil.entity.SearchEntity;
 import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.enums.BizScene;
 import org.apache.commons.compress.utils.Lists;

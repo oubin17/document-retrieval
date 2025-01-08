@@ -24,8 +24,8 @@ public interface FileSearchRepository extends JpaRepository<FileSearchDO, Long> 
      * @param pageSize
      * @return
      */
-    @Query(value = "select * from t_file_search  WHERE MATCH(content) AGAINST(:keyword IN NATURAL LANGUAGE MODE) limit :pageNo, :pageSize", nativeQuery = true)
-    List<FileSearchDO> findByCondition(@Param("keyword") String keyword, @Param("pageNo")  int pageNo, @Param("pageSize")  int pageSize);
+    @Query(value = "select * from t_file_search  WHERE MATCH(file_name, content) AGAINST(:keyword IN NATURAL LANGUAGE MODE) limit :pageNo, :pageSize", nativeQuery = true)
+    List<FileSearchDO> findByCondition(@Param("keyword") String keyword, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
 
     /**
      * 匹配数量
@@ -33,7 +33,7 @@ public interface FileSearchRepository extends JpaRepository<FileSearchDO, Long> 
      * @param keyword
      * @return
      */
-    @Query(value = "select count(1) from t_file_search  WHERE MATCH(content) AGAINST(:keyword IN NATURAL LANGUAGE MODE)", nativeQuery = true)
+    @Query(value = "select count(1) from t_file_search WHERE MATCH(file_name, content) AGAINST(:keyword IN NATURAL LANGUAGE MODE)", nativeQuery = true)
     int conditionCount(@Param("keyword") String keyword);
 
     /**

@@ -7,7 +7,7 @@ import com.odk.basedomain.model.user.UserAccessTokenDO;
 import com.odk.basedomain.model.user.UserBaseDO;
 import com.odk.basedomain.repository.user.UserAccessTokenRepository;
 import com.odk.basedomain.repository.user.UserBaseRepository;
-import com.odk.basemanager.entity.UserEntity;
+import com.odk.baseutil.entity.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;

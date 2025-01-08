@@ -7,17 +7,12 @@ import com.odk.baseapi.inter.permission.PermissionApi;
 import com.odk.baseapi.request.role.RoleAddRequest;
 import com.odk.baseapi.request.role.UserRoleRelaRequest;
 import com.odk.baseapi.response.PermissionQueryResponse;
-import com.odk.baseapi.vo.PermissionVO;
-import com.odk.baseapi.vo.UserRoleVo;
 import com.odk.basemanager.deal.permission.PermissionManager;
-import com.odk.basemanager.entity.PermissionEntity;
 import com.odk.baseservice.template.AbstractApiImpl;
+import com.odk.baseutil.entity.PermissionEntity;
 import com.odk.baseutil.enums.BizScene;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * PermissionService
@@ -53,24 +48,8 @@ public class PermissionService extends AbstractApiImpl implements PermissionApi 
                 }
                 PermissionQueryResponse permissionQueryResponse = new PermissionQueryResponse();
                 permissionQueryResponse.setUserId(permissionEntity.getUserId());
-                List<UserRoleVo> roles = permissionEntity.getRoles().stream().map(userRoleDO -> {
-                    UserRoleVo userRoleVo = new UserRoleVo();
-                    userRoleVo.setId(userRoleDO.getId());
-                    userRoleVo.setRoleCode(userRoleDO.getRoleCode());
-                    userRoleVo.setRoleName(userRoleDO.getRoleName());
-                    userRoleVo.setStatus(userRoleDO.getStatus());
-                    return userRoleVo;
-                }).collect(Collectors.toList());
-                permissionQueryResponse.setRoles(roles);
-                List<PermissionVO> permissions = permissionEntity.getPermissions().stream().map(permissionDO -> {
-                    PermissionVO permissionVO = new PermissionVO();
-                    permissionVO.setId(permissionDO.getId());
-                    permissionVO.setPermissionCode(permissionDO.getPermissionCode());
-                    permissionVO.setPermissionName(permissionDO.getPermissionName());
-                    permissionVO.setStatus(permissionDO.getStatus());
-                    return permissionVO;
-                }).collect(Collectors.toList());
-                permissionQueryResponse.setPermissions(permissions);
+                permissionQueryResponse.setRoles(permissionEntity.getRoles());
+                permissionQueryResponse.setPermissions(permissionEntity.getPermissions());
                 return permissionQueryResponse;
             }
 

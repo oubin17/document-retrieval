@@ -4,6 +4,10 @@ import com.odk.basedomain.model.file.FileDO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * FileRepository
@@ -21,5 +25,16 @@ public interface FileRepository extends JpaRepository<FileDO, Long> {
      * @return
      */
     Page<FileDO> findByFileNameLike(String fileName, Pageable pageable);
+
+    /**
+     * 更新文件状态
+     * @param id
+     * @param status
+     * @return
+     */
+    @Modifying
+    @Transactional
+    @Query("UPDATE FileDO d SET d.status = :status where d.id = :id")
+    int updateFileStatus(@Param("id") Long id, @Param("status") String status);
 
 }

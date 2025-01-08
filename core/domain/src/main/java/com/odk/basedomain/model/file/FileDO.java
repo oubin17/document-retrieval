@@ -56,4 +56,10 @@ public class FileDO extends BaseDO {
      */
     @Column(name = "full_file_path")
     private String fullFilePath;
+
+    /**
+     * 文件状态
+     */
+    @Column(name = "status")
+    private String status;
 }

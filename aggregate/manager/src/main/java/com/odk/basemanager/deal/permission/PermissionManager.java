@@ -12,7 +12,9 @@ import com.odk.basedomain.repository.permission.PermissionRepository;
 import com.odk.basedomain.repository.permission.UserRoleRelRepository;
 import com.odk.basedomain.repository.permission.UserRoleRepository;
 import com.odk.basedomain.repository.user.UserBaseRepository;
-import com.odk.basemanager.entity.PermissionEntity;
+import com.odk.baseutil.entity.PermissionEntity;
+import com.odk.baseutil.entity.RolePermissionEntity;
+import com.odk.baseutil.entity.UserRoleEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,11 +53,29 @@ public class PermissionManager {
         PermissionEntity permissionEntity = new PermissionEntity();
         permissionEntity.setUserId(userId);
         List<UserRoleDO> userRoleDOS = userRoleRepository.findAllUserRole(userId);
-        permissionEntity.setRoles(userRoleDOS);
+        List<UserRoleEntity> roles = userRoleDOS.stream().map(userRoleDO -> {
+            UserRoleEntity userRoleEntity = new UserRoleEntity();
+            userRoleEntity.setId(userRoleDO.getId());
+            userRoleEntity.setRoleCode(userRoleDO.getRoleCode());
+            userRoleEntity.setRoleName(userRoleDO.getRoleName());
+            userRoleEntity.setStatus(userRoleDO.getStatus());
+            return userRoleEntity;
+        }).collect(Collectors.toList());
+        permissionEntity.setRoles(roles);
+
         if (!CollectionUtils.isEmpty(userRoleDOS)) {
             List<Long> roleIds = userRoleDOS.stream().map(UserRoleDO::getId).collect(Collectors.toList());
             List<PermissionDO> allRolePermission = permissionRepository.findAllRolePermission(roleIds);
-            permissionEntity.setPermissions(allRolePermission);
+
+            List<RolePermissionEntity> permissions = allRolePermission.stream().map(permissionDO -> {
+                RolePermissionEntity rolePermissionEntity = new RolePermissionEntity();
+                rolePermissionEntity.setId(permissionDO.getId());
+                rolePermissionEntity.setPermissionCode(permissionDO.getPermissionCode());
+                rolePermissionEntity.setPermissionName(permissionDO.getPermissionName());
+                rolePermissionEntity.setStatus(permissionDO.getStatus());
+                return rolePermissionEntity;
+            }).collect(Collectors.toList());
+            permissionEntity.setPermissions(permissions);
         } else {
             permissionEntity.setPermissions(Lists.newArrayList());
         }

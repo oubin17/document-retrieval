@@ -2,6 +2,7 @@ package com.odk.baseapi.request.document;
 
 import com.odk.base.vo.request.PageRequest;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 
@@ -12,6 +13,7 @@ import java.io.Serial;
  * @version: 1.0
  * @author: oubin on 2025/1/1
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class DocumentSearchRequest extends PageRequest {
 

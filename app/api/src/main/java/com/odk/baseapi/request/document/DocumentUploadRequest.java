@@ -44,6 +44,6 @@ public class DocumentUploadRequest extends BaseRequest {
     /**
      * 文件名称
      */
-    private String dirId;
+    private Long dirId;
 
 }

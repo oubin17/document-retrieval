@@ -1,19 +1,23 @@
 package com.odk.basemanager.deal.document;
 
+import com.odk.base.enums.common.CommonStatusEnum;
 import com.odk.base.exception.AssertUtil;
 import com.odk.base.exception.BizErrorCode;
 import com.odk.base.exception.BizException;
 import com.odk.base.idgenerator.SnowflakeIdUtil;
 import com.odk.base.util.FileUtil;
 import com.odk.base.vo.response.PageResponse;
+import com.odk.baseutil.entity.FileEntity;
 import com.odk.basedomain.model.es.DocumentDO;
+import com.odk.basedomain.model.file.DirectoryDO;
 import com.odk.basedomain.model.file.FileDO;
 import com.odk.basedomain.model.file.FileSearchDO;
 import com.odk.basedomain.repository.es.DocumentRepository;
+import com.odk.basedomain.repository.file.DirectoryRepository;
 import com.odk.basedomain.repository.file.FileRepository;
 import com.odk.basedomain.repository.file.FileSearchRepository;
 import com.odk.basemanager.dto.document.DocUploadDTO;
-import com.odk.basemanager.entity.FileEntity;
+import com.odk.baseutil.enums.DirectoryTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -46,18 +50,80 @@ public class DocumentManager {
 
     private FileSearchRepository fileSearchRepository;
 
+    private DirectoryRepository directoryRepository;
+
 
     private TransactionTemplate transactionTemplate;
 
     @Value("${file.input.path}")
     private String baseFilePath;
 
-    public Boolean deleteDoc(Long docId) {
-        Optional<FileDO> byId = fileRepository.findById(docId);
+
+    public Long uploadDoc(DocUploadDTO uploadDTO) {
+
+        //检查文件夹是否合法
+        DirectoryDO directoryDO = directoryRepository.findByIdAndDirectoryTypeAndStatus(uploadDTO.getDirId(), DirectoryTypeEnum.FOLDER.getCode(), CommonStatusEnum.NORMAL.getCode());
+        AssertUtil.notNull(directoryDO, BizErrorCode.PARAM_ILLEGAL, "父节点路径非法");
+
+        long mainId = SnowflakeIdUtil.nextId();
+        String fullFilaPath = FileUtil.generateFullFileName(baseFilePath, String.valueOf(mainId), uploadDTO.getFileName());
+        FileUtil.checkAndCreateFilePath(baseFilePath);
+        transactionTemplate.executeWithoutResult(transactionStatus -> {
+            try {
+                //1.上传文件
+                FileUtil.saveFile(fullFilaPath, uploadDTO.getFileInputStream());
+                //2.获取文件内容
+                String docContents = FileUtil.getFileContents(fullFilaPath);
+                AssertUtil.isNotEmpty(docContents, "文件内容为空");
+                //3.保存文件到db
+                FileDO fileDO = new FileDO();
+                fileDO.setId(mainId);
+                fileDO.setFileName(uploadDTO.getFileName());
+                fileDO.setContentType(uploadDTO.getContentType());
+                fileDO.setFileSize(uploadDTO.getFileSize());
+                fileDO.setFullFilePath(fullFilaPath);
+                fileDO.setStatus(CommonStatusEnum.NORMAL.getCode());
+                fileRepository.save(fileDO);
+
+                //4.保存文件内容到db
+                FileSearchDO fileSearchDO = new FileSearchDO();
+                fileSearchDO.setFileId(mainId);
+                fileSearchDO.setFileName(uploadDTO.getFileName());
+                fileSearchDO.setContent(docContents);
+                fileSearchRepository.save(fileSearchDO);
+
+                //5.创建叶子结点
+                DirectoryDO leafDirectory = new DirectoryDO();
+                leafDirectory.setDirectoryName(uploadDTO.getFileName());
+                leafDirectory.setDirectoryType(DirectoryTypeEnum.FILE.getCode());
+                leafDirectory.setFileId(mainId);
+                leafDirectory.setParentId(uploadDTO.getDirId());
+                leafDirectory.setStatus(CommonStatusEnum.NORMAL.getCode());
+                directoryRepository.save(leafDirectory);
+
+            } catch (BizException bizException) {
+                FileUtil.deleteFile(fullFilaPath);
+                throw bizException;
+            } catch (IOException e) {
+                log.error("文件上传失败，文件名：{}，错误信息：", uploadDTO.getFileName(), e);
+                throw new BizException(BizErrorCode.SYSTEM_ERROR);
+            } catch (Exception e) {
+                log.error("文件上传发生未知错误,", e);
+                throw e;
+            }
+        });
+        return mainId;
+    }
+
+    public Boolean deleteDoc(Long fileId) {
+        Optional<FileDO> byId = fileRepository.findById(fileId);
         AssertUtil.isTrue(byId.isPresent(), BizErrorCode.PARAM_ILLEGAL, "文件不存在");
         FileUtil.deleteFile(byId.get().getFullFilePath());
-        fileSearchRepository.deleteByFileId(docId);
-        fileRepository.deleteById(docId);
+        transactionTemplate.executeWithoutResult(transactionStatus -> {
+            fileSearchRepository.deleteByFileId(fileId);
+            //文件配置信息软删除
+            fileRepository.updateFileStatus(fileId, CommonStatusEnum.DELETE.getCode());
+        });
         return true;
     }
 
@@ -81,55 +147,6 @@ public class DocumentManager {
         return documentEntityPageResponse;
     }
 
-    public Long uploadDoc(DocUploadDTO uploadDTO) {
-        long mainId = SnowflakeIdUtil.nextId();
-        String fullFilaPath = FileUtil.generateFullFileName(baseFilePath, String.valueOf(mainId), uploadDTO.getFileName());
-        FileUtil.checkAndCreateFilePath(baseFilePath);
-        transactionTemplate.executeWithoutResult(transactionStatus -> {
-            try {
-                //1.上传文件
-                FileUtil.saveFile(fullFilaPath, uploadDTO.getFileInputStream());
-                //2.获取文件内容
-                String docContents = FileUtil.getFileContents(fullFilaPath);
-                AssertUtil.isNotEmpty(docContents, "文件内容为空");
-                log.info("文件内容 {}", docContents);
-
-                //3.内容写到ES
-//                documentDO.setId(mainId);
-//                documentDO.setFileName(uploadDTO.getFileName());
-//                documentDO.setContentType(uploadDTO.getContentType());
-//                documentDO.setFileContents(docContents);
-//                documentDO.setFileSize(uploadDTO.getFileSize());
-//                documentDO.setFullFilePath(fullFilaPath);
-//                documentDO.setCreateTimeMill(LocalDateTimeUtil.getCurrentDateTime().toInstant(ZoneOffset.UTC).toEpochMilli());
-//                documentRepository.save(documentDO);
-
-                //3.保存文件到db
-                FileDO fileDO = new FileDO();
-                fileDO.setId(mainId);
-                fileDO.setFileName(uploadDTO.getFileName());
-                fileDO.setContentType(uploadDTO.getContentType());
-                fileDO.setFileSize(uploadDTO.getFileSize());
-                fileDO.setFullFilePath(fullFilaPath);
-                fileRepository.save(fileDO);
-
-                //4.保存文件内容到db
-                FileSearchDO fileSearchDO = new FileSearchDO();
-                fileSearchDO.setFileId(mainId);
-                fileSearchDO.setContent(docContents);
-                fileSearchRepository.save(fileSearchDO);
-            } catch (IOException e) {
-                log.error("文件上传失败，文件名：{}，错误信息：", uploadDTO.getFileName(), e);
-                throw new BizException(BizErrorCode.SYSTEM_ERROR);
-            } catch (Exception e) {
-                log.error("文件上传发生未知错误,", e);
-                throw e;
-            }
-
-        });
-
-        return mainId;
-    }
 
     public DocumentDO searchById(Long id) {
         return documentRepository.findById(id).orElse(null);
@@ -154,5 +171,10 @@ public class DocumentManager {
     @Autowired
     public void setTransactionTemplate(TransactionTemplate transactionTemplate) {
         this.transactionTemplate = transactionTemplate;
+    }
+
+    @Autowired
+    public void setDirectoryRepository(DirectoryRepository directoryRepository) {
+        this.directoryRepository = directoryRepository;
     }
 }

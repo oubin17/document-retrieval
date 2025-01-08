@@ -33,6 +33,13 @@ public enum BizScene {
 
     SEARCH("SEARCH", "搜索"),
 
+    DIRECTORY_CREATE("DIRECTORY_CREATE",  "创建文件夹"),
+
+    DIRECTORY_DELETE("DIRECTORY_DELETE", "删除文件夹"),
+
+    DIRECTORY_TREE("DIRECTORY_TREE", "目录树"),
+
+
 
 
     ;

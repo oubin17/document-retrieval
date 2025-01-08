@@ -1,18 +1,18 @@
-package com.odk.basemanager.entity;
+package com.odk.baseutil.entity;
 
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 /**
- * DocumentEntity
+ * SearchEntity
  *
  * @description:
  * @version: 1.0
- * @author: oubin on 2025/1/1
+ * @author: oubin on 2024/12/26
  */
 @Data
-public class FileEntity {
+public class SearchEntity {
 
     private Long id;
 

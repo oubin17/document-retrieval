@@ -1,7 +1,7 @@
 package com.odk.baseapi.response;
 
-import com.odk.baseapi.vo.PermissionVO;
-import com.odk.baseapi.vo.UserRoleVo;
+import com.odk.baseutil.entity.RolePermissionEntity;
+import com.odk.baseutil.entity.UserRoleEntity;
 import lombok.Data;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class PermissionQueryResponse {
 
     private Long userId;
 
-    private List<UserRoleVo> roles;
+    private List<UserRoleEntity> roles;
 
-    private List<PermissionVO> permissions;
+    private List<RolePermissionEntity> permissions;
 }

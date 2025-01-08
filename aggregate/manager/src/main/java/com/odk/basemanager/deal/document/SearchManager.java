@@ -5,7 +5,7 @@ import com.odk.basedomain.domain.inter.SearchDomain;
 import com.odk.basedomain.model.file.FileDO;
 import com.odk.basedomain.model.file.FileSearchDO;
 import com.odk.basedomain.repository.file.FileRepository;
-import com.odk.basemanager.entity.SearchEntity;
+import com.odk.baseutil.entity.SearchEntity;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;

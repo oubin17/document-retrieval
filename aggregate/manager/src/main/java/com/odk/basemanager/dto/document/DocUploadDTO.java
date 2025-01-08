@@ -41,6 +41,6 @@ public class DocUploadDTO extends DTO {
     /**
      * 文件夹id
      */
-    private String dirId;
+    private Long dirId;
 
 }
