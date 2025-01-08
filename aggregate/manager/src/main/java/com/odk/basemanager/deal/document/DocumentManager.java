@@ -60,10 +60,11 @@ public class DocumentManager {
 
 
     public Long uploadDoc(DocUploadDTO uploadDTO) {
-
         //检查文件夹是否合法
-        DirectoryDO directoryDO = directoryRepository.findByIdAndDirectoryTypeAndStatus(uploadDTO.getDirId(), DirectoryTypeEnum.FOLDER.getCode(), CommonStatusEnum.NORMAL.getCode());
-        AssertUtil.notNull(directoryDO, BizErrorCode.PARAM_ILLEGAL, "父节点路径非法");
+        if (uploadDTO.getDirId() != 0L) {
+            DirectoryDO directoryDO = directoryRepository.findByIdAndDirectoryTypeAndStatus(uploadDTO.getDirId(), DirectoryTypeEnum.FOLDER.getCode(), CommonStatusEnum.NORMAL.getCode());
+            AssertUtil.notNull(directoryDO, BizErrorCode.PARAM_ILLEGAL, "父节点路径非法");
+        }
 
         long mainId = SnowflakeIdUtil.nextId();
         String fullFilaPath = FileUtil.generateFullFileName(baseFilePath, String.valueOf(mainId), uploadDTO.getFileName());
