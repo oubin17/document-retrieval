@@ -35,11 +35,11 @@ public class RolePermissionRelDO extends BaseDO {
      * 角色id
      */
     @Column(name = "role_id")
-    private Long roleId;
+    private String roleId;
 
     /**
      * 权限id
      */
     @Column(name = "permission_id")
-    private Long permissionId;
+    private String permissionId;
 }

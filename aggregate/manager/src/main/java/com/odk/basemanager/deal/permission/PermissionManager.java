@@ -49,7 +49,7 @@ public class PermissionManager {
      * @param userId
      * @return
      */
-    public PermissionEntity getAllPermissions(Long userId) {
+    public PermissionEntity getAllPermissions(String userId) {
         PermissionEntity permissionEntity = new PermissionEntity();
         permissionEntity.setUserId(userId);
         List<UserRoleDO> userRoleDOS = userRoleRepository.findAllUserRole(userId);
@@ -64,7 +64,7 @@ public class PermissionManager {
         permissionEntity.setRoles(roles);
 
         if (!CollectionUtils.isEmpty(userRoleDOS)) {
-            List<Long> roleIds = userRoleDOS.stream().map(UserRoleDO::getId).collect(Collectors.toList());
+            List<String> roleIds = userRoleDOS.stream().map(UserRoleDO::getId).collect(Collectors.toList());
             List<PermissionDO> allRolePermission = permissionRepository.findAllRolePermission(roleIds);
 
             List<RolePermissionEntity> permissions = allRolePermission.stream().map(permissionDO -> {
@@ -89,7 +89,7 @@ public class PermissionManager {
      * @param roleName
      * @return
      */
-    public Long addRole(String roleCode, String roleName) {
+    public String addRole(String roleCode, String roleName) {
         UserRoleDO userRoleDO = userRoleRepository.findByRoleCode(roleCode);
         AssertUtil.isNull(userRoleDO, BizErrorCode.PARAM_ILLEGAL, "角色码重复，添加角色失败");
         UserRoleDO addRole = new UserRoleDO();
@@ -100,7 +100,7 @@ public class PermissionManager {
         return save.getId();
     }
 
-    public Long addUserRoleRela(Long roleId, Long userId) {
+    public String addUserRoleRela(String roleId, String userId) {
         UserRoleRelDO userRoleRelDO = relRepository.findByUserIdAndRoleId(userId, roleId);
         AssertUtil.isNull(userRoleRelDO, BizErrorCode.PARAM_ILLEGAL, "用户已具备该权限");
 

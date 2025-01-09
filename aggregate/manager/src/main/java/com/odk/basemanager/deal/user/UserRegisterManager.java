@@ -43,14 +43,14 @@ public class UserRegisterManager {
 
     private TransactionTemplate transactionTemplate;
 
-    public Long registerUser(UserRegisterDTO userRegisterDTO) {
+    public String registerUser(UserRegisterDTO userRegisterDTO) {
         UserAccessTokenDO byTokenTypeAndTokenValue = accessTokenRepository.findByTokenTypeAndTokenValue(userRegisterDTO.getLoginType(), userRegisterDTO.getLoginId());
         AssertUtil.isNull(byTokenTypeAndTokenValue, BizErrorCode.USER_HAS_EXISTED, "用户已经存在，类型：" + userRegisterDTO.getLoginType() + "，登录ID：" + userRegisterDTO.getLoginId());
-        Long userId;
+        String userId;
         try {
 
             userId = transactionTemplate.execute(status -> {
-                Long userId1 = addUserBase(userRegisterDTO);
+                String userId1 = addUserBase(userRegisterDTO);
                 addAccessToken(userId1, userRegisterDTO);
                 //密码加密
                 String password = userRegisterDTO.getPassword();
@@ -77,7 +77,7 @@ public class UserRegisterManager {
      *
      * @param userRegisterDTO
      */
-    private Long addUserBase(UserRegisterDTO userRegisterDTO) {
+    private String addUserBase(UserRegisterDTO userRegisterDTO) {
         UserBaseDO userBase = new UserBaseDO();
         userBase.setUserType(UserTypeEnum.INDIVIDUAL.getCode());
         userBase.setUserStatus(UserStatusEnum.NORMAL.getCode());
@@ -92,7 +92,7 @@ public class UserRegisterManager {
      * @param userId
      * @param userRegisterDTO
      */
-    private void addAccessToken(Long userId, UserRegisterDTO userRegisterDTO) {
+    private void addAccessToken(String userId, UserRegisterDTO userRegisterDTO) {
         UserAccessTokenDO accessToken = new UserAccessTokenDO();
         accessToken.setUserId(userId);
         accessToken.setTokenType(userRegisterDTO.getLoginType());
@@ -106,7 +106,7 @@ public class UserRegisterManager {
      * @param userId
      * @param userRegisterDTO
      */
-    private void addIdentification(Long userId, UserRegisterDTO userRegisterDTO) {
+    private void addIdentification(String userId, UserRegisterDTO userRegisterDTO) {
         UserIdentificationDO identification = new UserIdentificationDO();
         identification.setUserId(userId);
         identification.setIdentifyType(IdentificationTypeEnum.PASSWORD.getCode());

@@ -15,7 +15,7 @@ public class RolePermissionEntity {
     /**
      * 权限ID
      */
-    private Long id;
+    private String id;
 
     /**
      * 权限码

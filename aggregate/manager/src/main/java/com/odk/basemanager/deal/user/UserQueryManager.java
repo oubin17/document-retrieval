@@ -38,7 +38,7 @@ public class UserQueryManager {
      * @param userId
      * @return
      */
-    public UserEntity queryByUserId(Long userId) {
+    public UserEntity queryByUserId(String userId) {
         Optional<UserBaseDO> userBaseDO = baseRepository.findById(userId);
         if (userBaseDO.isEmpty()) {
             logger.error("找不到用户，用户ID={}", userId);
@@ -55,7 +55,7 @@ public class UserQueryManager {
      * @param userId
      * @return
      */
-    public UserEntity queryByUserIdAndCheck(Long userId) {
+    public UserEntity queryByUserIdAndCheck(String userId) {
         Optional<UserBaseDO> userBaseDO = baseRepository.findById(userId);
         if (userBaseDO.isEmpty()) {
             logger.error("找不到用户，用户ID={}", userId);

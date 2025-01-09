@@ -34,7 +34,7 @@ public class UserBaseDO extends BaseDO {
     @Id
     @GeneratedValue(generator = "user-uuid")
     @GenericGenerator(name = "user-uuid", strategy = "com.odk.basedomain.idgenerate.CustomIDGenerator")
-    private Long id;
+    private String id;
 
     /**
      * 用户名称

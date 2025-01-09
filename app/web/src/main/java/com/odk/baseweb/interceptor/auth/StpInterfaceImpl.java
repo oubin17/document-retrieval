@@ -26,14 +26,14 @@ public class StpInterfaceImpl implements StpInterface {
 
     @Override
     public List<String> getPermissionList(Object loginId, String loginType) {
-        ServiceResponse<PermissionQueryResponse> response = permissionApi.userPermission((Long) loginId);
+        ServiceResponse<PermissionQueryResponse> response = permissionApi.userPermission((String) loginId);
         List<RolePermissionEntity> permissions = response.getData().getPermissions();
         return permissions.stream().map(RolePermissionEntity::getPermissionCode).collect(Collectors.toList());
     }
 
     @Override
     public List<String> getRoleList(Object loginId, String loginType) {
-        ServiceResponse<PermissionQueryResponse> response = permissionApi.userPermission((Long) loginId);
+        ServiceResponse<PermissionQueryResponse> response = permissionApi.userPermission((String) loginId);
         List<UserRoleEntity> roles = response.getData().getRoles();
         return roles.stream().map(UserRoleEntity::getRoleCode).collect(Collectors.toList());
     }

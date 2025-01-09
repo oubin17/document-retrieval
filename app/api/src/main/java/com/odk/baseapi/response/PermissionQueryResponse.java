@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 public class PermissionQueryResponse {
 
-    private Long userId;
+    private String userId;
 
     private List<UserRoleEntity> roles;
 

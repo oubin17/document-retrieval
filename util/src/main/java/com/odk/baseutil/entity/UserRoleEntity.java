@@ -15,7 +15,7 @@ public class UserRoleEntity {
     /**
      * 角色id
      */
-    private Long id;
+    private String id;
 
     /**
      * 角色码
