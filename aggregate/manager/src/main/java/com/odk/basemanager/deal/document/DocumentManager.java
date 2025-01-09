@@ -59,15 +59,15 @@ public class DocumentManager {
     private String baseFilePath;
 
 
-    public Long uploadDoc(DocUploadDTO uploadDTO) {
+    public String uploadDoc(DocUploadDTO uploadDTO) {
         //检查文件夹是否合法
-        if (uploadDTO.getDirId() != 0L) {
+        if (!StringUtils.equals(uploadDTO.getDirId(), "0")) {
             DirectoryDO directoryDO = directoryRepository.findByIdAndDirectoryTypeAndStatus(uploadDTO.getDirId(), DirectoryTypeEnum.FOLDER.getCode(), CommonStatusEnum.NORMAL.getCode());
             AssertUtil.notNull(directoryDO, BizErrorCode.PARAM_ILLEGAL, "父节点路径非法");
         }
 
-        long mainId = SnowflakeIdUtil.nextId();
-        String fullFilaPath = FileUtil.generateFullFileName(baseFilePath, String.valueOf(mainId), uploadDTO.getFileName());
+        String mainId = String.valueOf(SnowflakeIdUtil.nextId());
+        String fullFilaPath = FileUtil.generateFullFileName(baseFilePath, mainId, uploadDTO.getFileName());
         FileUtil.checkAndCreateFilePath(baseFilePath);
         transactionTemplate.executeWithoutResult(transactionStatus -> {
             try {
@@ -116,7 +116,7 @@ public class DocumentManager {
         return mainId;
     }
 
-    public Boolean deleteDoc(Long fileId) {
+    public Boolean deleteDoc(String fileId) {
         Optional<FileDO> byId = fileRepository.findById(fileId);
         AssertUtil.isTrue(byId.isPresent(), BizErrorCode.PARAM_ILLEGAL, "文件不存在");
         FileUtil.deleteFile(byId.get().getFullFilePath());

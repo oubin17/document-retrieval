@@ -32,7 +32,7 @@ public class DirectoryDO extends BaseDO {
     @Id
     @GeneratedValue(generator = "user-uuid")
     @GenericGenerator(name = "user-uuid", strategy = "com.odk.basedomain.idgenerate.CustomIDGenerator")
-    private Long id;
+    private String id;
 
     @Column(name = "directory_name")
     @Comment("文件夹名称")
@@ -48,13 +48,13 @@ public class DirectoryDO extends BaseDO {
      * 文件id
      */
     @Column(name = "file_id")
-    private Long fileId;
+    private String fileId;
 
     /**
      * 父节点ID，如果是根节点，parent_id为0
      */
     @Column(name = "parent_id")
-    private Long parentId;
+    private String parentId;
 
     /**
      * 状态 {@link com.odk.base.enums.common.CommonStatusEnum}

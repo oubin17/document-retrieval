@@ -18,7 +18,7 @@ public class DirectoryEntity {
     /**
      * 节点id
      */
-    private Long id;
+    private String id;
 
     /**
      * 文件夹名称

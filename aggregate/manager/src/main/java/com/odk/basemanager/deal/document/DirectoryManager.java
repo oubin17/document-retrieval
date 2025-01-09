@@ -10,6 +10,7 @@ import com.odk.basedomain.repository.file.DirectoryRepository;
 import com.odk.basemanager.dto.document.DirectoryCreateDTO;
 import com.odk.baseutil.enums.DirectoryTypeEnum;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,8 +37,8 @@ public class DirectoryManager {
      * @param createDTO
      * @return
      */
-    public Long createDirectory(DirectoryCreateDTO createDTO) {
-        if (null != createDTO.getParentId() && createDTO.getParentId() != 0L) {
+    public String createDirectory(DirectoryCreateDTO createDTO) {
+        if (null != createDTO.getParentId() && !StringUtils.equals(createDTO.getParentId(), "0")) {
             DirectoryDO directoryDO = directoryRepository.findByIdAndDirectoryTypeAndStatus(createDTO.getParentId(), DirectoryTypeEnum.FOLDER.getCode(), CommonStatusEnum.NORMAL.getCode());
             AssertUtil.notNull(directoryDO, BizErrorCode.PARAM_ILLEGAL, "父节点不存在");
         }
@@ -59,7 +60,7 @@ public class DirectoryManager {
      * @param directoryId
      * @return
      */
-    public boolean deleteDirectory(Long directoryId) {
+    public boolean deleteDirectory(String directoryId) {
         int count = directoryRepository.updateStatus(directoryId, CommonStatusEnum.DELETE.getCode());
         return count > 0;
     }

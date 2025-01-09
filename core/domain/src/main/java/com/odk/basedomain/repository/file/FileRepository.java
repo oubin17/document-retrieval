@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @version: 1.0
  * @author: oubin on 2024/12/26
  */
-public interface FileRepository extends JpaRepository<FileDO, Long> {
+public interface FileRepository extends JpaRepository<FileDO, String> {
 
     /**
      * 查询文本匹配
@@ -35,6 +35,6 @@ public interface FileRepository extends JpaRepository<FileDO, Long> {
     @Modifying
     @Transactional
     @Query("UPDATE FileDO d SET d.status = :status where d.id = :id")
-    int updateFileStatus(@Param("id") Long id, @Param("status") String status);
+    int updateFileStatus(@Param("id") String id, @Param("status") String status);
 
 }

@@ -14,7 +14,7 @@ import java.util.List;
  * @version: 1.0
  * @author: oubin on 2025/1/7
  */
-public interface FileSearchRepository extends JpaRepository<FileSearchDO, Long> {
+public interface FileSearchRepository extends JpaRepository<FileSearchDO, String> {
 
     /**
      * 根据关键字查找
@@ -42,5 +42,5 @@ public interface FileSearchRepository extends JpaRepository<FileSearchDO, Long> 
      * @param fileId
      * @return
      */
-    int deleteByFileId(Long fileId);
+    int deleteByFileId(String fileId);
 }

@@ -22,6 +22,6 @@ public class CustomIDGenerator implements IdentifierGenerator {
     public Serializable generate(SharedSessionContractImplementor session, Object object) throws MappingException {
         //这里如果Object中的id不为空，则直接使用object中的id，实现逻辑待优化
         JSONObject jsonObject = JSONObject.parseObject(JSON.toJSONString(object));
-        return jsonObject.get("id") == null ? SnowflakeIdUtil.nextId() : (Long) jsonObject.get("id");
+        return jsonObject.get("id") == null ? String.valueOf(SnowflakeIdUtil.nextId()) : jsonObject.getString("id") ;
     }
 }

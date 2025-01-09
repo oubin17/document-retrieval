@@ -35,8 +35,8 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
     private DocumentManager documentManager;
 
     @Override
-    public ServiceResponse<Long> uploadDoc(DocumentUploadRequest docUploadRequest) {
-        return super.queryProcess(BizScene.DOC_UPLOAD, docUploadRequest, new QueryApiCallBack<Long, Long>() {
+    public ServiceResponse<String> uploadDoc(DocumentUploadRequest docUploadRequest) {
+        return super.queryProcess(BizScene.DOC_UPLOAD, docUploadRequest, new QueryApiCallBack<String, String>() {
 
             @Override
             protected void checkParams(Object request) {
@@ -47,7 +47,7 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
             protected Object convert(Object request) {
                 if (docUploadRequest.getDirId() == null) {
                     //如果传空，默认在根目录上传
-                    docUploadRequest.setDirId(0L);
+                    docUploadRequest.setDirId("0");
                 }
                 DocUploadDTO uploadDTO = new DocUploadDTO();
                 BeanUtils.copyProperties(docUploadRequest, uploadDTO);
@@ -55,13 +55,13 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
             }
 
             @Override
-            protected Long doProcess(Object args) {
+            protected String doProcess(Object args) {
                 DocUploadDTO uploadDTO = (DocUploadDTO) args;
                 return documentManager.uploadDoc(uploadDTO);
             }
 
             @Override
-            protected Long convertResult(Long docId) {
+            protected String convertResult(String docId) {
                 return docId;
             }
 
@@ -69,7 +69,7 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
     }
 
     @Override
-    public ServiceResponse<Boolean> deleteDoc(Long docId) {
+    public ServiceResponse<Boolean> deleteDoc(String docId) {
         return super.queryProcess(BizScene.DOC_DELETE, docId, new QueryApiCallBack<Boolean, Boolean>() {
 
             @Override

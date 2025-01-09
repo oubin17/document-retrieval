@@ -23,7 +23,7 @@ public class DocumentDO {
     private static final long serialVersionUID = 9179760589675345038L;
 
     @Id
-    private Long id;
+    private String id;
 
     /**
      * 文件名称

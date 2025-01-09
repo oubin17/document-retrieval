@@ -21,7 +21,7 @@ public interface DirectoryApi {
      * @param directoryCreateRequest
      * @return
      */
-    ServiceResponse<Long> createDirectory(DirectoryCreateRequest directoryCreateRequest);
+    ServiceResponse<String> createDirectory(DirectoryCreateRequest directoryCreateRequest);
 
     /**
      * 根据id删除目录
@@ -29,7 +29,7 @@ public interface DirectoryApi {
      * @param dirId
      * @return
      */
-    ServiceResponse<Boolean> deleteDirectory(Long dirId);
+    ServiceResponse<Boolean> deleteDirectory(String dirId);
 
     /**
      * 目录树

@@ -29,7 +29,7 @@ public class DirController {
      * @return
      */
     @PostMapping("/create")
-    public ServiceResponse<Long> queryByFileName(@RequestBody DirectoryCreateRequest directoryCreateRequest) {
+    public ServiceResponse<String> queryByFileName(@RequestBody DirectoryCreateRequest directoryCreateRequest) {
         return directoryApi.createDirectory(directoryCreateRequest);
     }
 
@@ -40,7 +40,7 @@ public class DirController {
      * @return
      */
     @DeleteMapping("/delete")
-    public ServiceResponse<Boolean> queryByFileName(@RequestParam("dirId") Long dirId) {
+    public ServiceResponse<Boolean> queryByFileName(@RequestParam("dirId") String dirId) {
         return directoryApi.deleteDirectory(dirId);
     }
 

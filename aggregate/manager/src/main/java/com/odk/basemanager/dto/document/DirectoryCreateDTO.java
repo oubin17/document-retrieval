@@ -23,5 +23,5 @@ public class DirectoryCreateDTO extends DTO {
     /**
      * 父节点ID
      */
-    private Long parentId;
+    private String parentId;
 }

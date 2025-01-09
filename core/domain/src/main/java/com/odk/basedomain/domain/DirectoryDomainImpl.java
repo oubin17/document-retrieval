@@ -29,7 +29,7 @@ public class DirectoryDomainImpl implements DirectoryDomain {
 
     @Override
     public List<DirectoryEntity> directoryTree() {
-        return buildDirectoryTree(0L);
+        return buildDirectoryTree("0");
     }
 
     /**
@@ -38,7 +38,7 @@ public class DirectoryDomainImpl implements DirectoryDomain {
      * @param parentId
      * @return
      */
-    private List<DirectoryEntity> buildDirectoryTree(Long parentId) {
+    private List<DirectoryEntity> buildDirectoryTree(String parentId) {
         List<DirectoryDO> rootDirectories = this.directoryRepository.findCurrentLevel(parentId);
         if (CollectionUtils.isEmpty(rootDirectories)) {
             return Lists.newArrayList();

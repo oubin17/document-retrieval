@@ -22,7 +22,7 @@ public interface DocumentApi {
      * @param docUploadRequest
      * @return
      */
-    ServiceResponse<Long> uploadDoc(DocumentUploadRequest docUploadRequest);
+    ServiceResponse<String> uploadDoc(DocumentUploadRequest docUploadRequest);
 
     /**
      * 根据id删除文档
@@ -30,7 +30,7 @@ public interface DocumentApi {
      * @param docId
      * @return
      */
-    ServiceResponse<Boolean> deleteDoc(Long docId);
+    ServiceResponse<Boolean> deleteDoc(String docId);
 
     /**
      * 根据文件名称查找

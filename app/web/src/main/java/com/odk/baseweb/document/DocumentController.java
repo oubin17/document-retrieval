@@ -45,7 +45,7 @@ public class DocumentController {
      * @throws IOException
      */
     @PostMapping("/upload")
-    public ServiceResponse<Long> uploadDocument(MultipartFile file, Long dirId) throws IOException {
+    public ServiceResponse<String> uploadDocument(MultipartFile file, String dirId) throws IOException {
         DocumentUploadRequest request = new DocumentUploadRequest();
         request.setFileInputStream(file.getInputStream());
         request.setFileName(file.getOriginalFilename());
@@ -56,7 +56,7 @@ public class DocumentController {
     }
 
     @DeleteMapping()
-    public ServiceResponse<Boolean> deleteDocument(@RequestParam("docId") Long docId) {
+    public ServiceResponse<Boolean> deleteDocument(@RequestParam("docId") String docId) {
         return documentApi.deleteDoc(docId);
     }
 

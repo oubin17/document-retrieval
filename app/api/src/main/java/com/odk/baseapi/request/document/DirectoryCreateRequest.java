@@ -22,5 +22,5 @@ public class DirectoryCreateRequest extends BaseRequest {
 
     private String directoryName;
 
-    private Long parentId;
+    private String parentId;
 }

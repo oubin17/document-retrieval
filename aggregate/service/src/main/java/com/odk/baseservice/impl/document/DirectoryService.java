@@ -36,8 +36,8 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
     private DirectoryManager directoryManager;
 
     @Override
-    public ServiceResponse<Long> createDirectory(DirectoryCreateRequest directoryCreateRequest) {
-        return super.queryProcess(BizScene.DIRECTORY_CREATE, directoryCreateRequest, new QueryApiCallBack<Long, Long>() {
+    public ServiceResponse<String> createDirectory(DirectoryCreateRequest directoryCreateRequest) {
+        return super.queryProcess(BizScene.DIRECTORY_CREATE, directoryCreateRequest, new QueryApiCallBack<String, String>() {
 
             @Override
             protected void checkParams(Object request) {
@@ -47,9 +47,9 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
 
             @Override
             protected Object convert(Object request) {
-                if (directoryCreateRequest.getParentId() == null || directoryCreateRequest.getParentId() == 0L) {
+                if (directoryCreateRequest.getParentId() == null) {
                     //如果传空，默认在根目录上传
-                    directoryCreateRequest.setParentId(0L);
+                    directoryCreateRequest.setParentId("0");
                 } else {
                     //校验父节点是否合法
                     DirectoryDO directoryDO = directoryRepository.findByIdAndDirectoryTypeAndStatus(directoryCreateRequest.getParentId(), DirectoryTypeEnum.FOLDER.getCode(), CommonStatusEnum.NORMAL.getCode());
@@ -61,20 +61,20 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
             }
 
             @Override
-            protected Long doProcess(Object args) {
+            protected String doProcess(Object args) {
                 DirectoryCreateDTO request = (DirectoryCreateDTO) args;
                return directoryManager.createDirectory(request);
             }
 
             @Override
-            protected Long convertResult(Long docId) {
+            protected String convertResult(String docId) {
                 return docId;
             }
         });
     }
 
     @Override
-    public ServiceResponse<Boolean> deleteDirectory(Long dirId) {
+    public ServiceResponse<Boolean> deleteDirectory(String dirId) {
         return super.queryProcess(BizScene.DIRECTORY_DELETE, dirId, new QueryApiCallBack<Boolean, Boolean>() {
 
             @Override
