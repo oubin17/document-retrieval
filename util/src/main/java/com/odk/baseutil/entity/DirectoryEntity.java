@@ -33,12 +33,12 @@ public class DirectoryEntity {
     /**
      * 文件id
      */
-    private Long fileId;
+    private String fileId;
 
     /**
      * 父节点ID
      */
-    private Long parentId;
+    private String parentId;
 
     /**
      * 创建时间

@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Data
 public class FileVO {
 
-    private Long id;
+    private String id;
 
     /**
      * 文件名称
