@@ -39,6 +39,8 @@ public enum BizScene {
 
     DIRECTORY_TREE("DIRECTORY_TREE", "目录树"),
 
+    DIRECTORY_SEARCH("DIRECTORY_SEARCH", "文件检索"),
+
 
 
 

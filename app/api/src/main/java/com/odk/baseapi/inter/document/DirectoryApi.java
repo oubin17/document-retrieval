@@ -1,6 +1,7 @@
 package com.odk.baseapi.inter.document;
 
 import com.odk.base.vo.response.ServiceResponse;
+import com.odk.baseapi.request.document.DirSearchRequest;
 import com.odk.baseapi.request.document.DirectoryCreateRequest;
 import com.odk.baseutil.entity.DirectoryEntity;
 
@@ -37,4 +38,12 @@ public interface DirectoryApi {
      * @return
      */
     ServiceResponse<List<DirectoryEntity>> directoryTree();
+
+    /**
+     * 文本内容
+     *
+     * @param dirSearchRequest
+     * @return
+     */
+    ServiceResponse<List<DirectoryEntity>> directorySearch(DirSearchRequest dirSearchRequest);
 }

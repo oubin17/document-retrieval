@@ -16,7 +16,7 @@ import com.odk.basedomain.repository.es.DocumentRepository;
 import com.odk.basedomain.repository.file.DirectoryRepository;
 import com.odk.basedomain.repository.file.FileRepository;
 import com.odk.basedomain.repository.file.FileSearchRepository;
-import com.odk.basemanager.dto.document.DocUploadDTO;
+import com.odk.baseutil.dto.document.DocUploadDTO;
 import com.odk.baseutil.enums.DirectoryTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

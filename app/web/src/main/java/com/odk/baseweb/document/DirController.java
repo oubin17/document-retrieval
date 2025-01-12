@@ -2,6 +2,7 @@ package com.odk.baseweb.document;
 
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.document.DirectoryApi;
+import com.odk.baseapi.request.document.DirSearchRequest;
 import com.odk.baseapi.request.document.DirectoryCreateRequest;
 import com.odk.baseutil.entity.DirectoryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,18 @@ public class DirController {
     public ServiceResponse<List<DirectoryEntity>> directoryTree() {
         return directoryApi.directoryTree();
     }
+
+    /**
+     * 目录树
+     *
+     * @return
+     */
+    @PostMapping("/search")
+    public ServiceResponse<List<DirectoryEntity>> directorySearch(@RequestBody DirSearchRequest dirSearchRequest) {
+        return directoryApi.directorySearch(dirSearchRequest);
+    }
+
+
     @Autowired
     public void setDirectoryApi(DirectoryApi directoryApi) {
         this.directoryApi = directoryApi;

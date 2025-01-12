@@ -5,15 +5,19 @@ import com.odk.base.exception.AssertUtil;
 import com.odk.base.exception.BizErrorCode;
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.document.DirectoryApi;
+import com.odk.baseapi.request.document.DirSearchRequest;
 import com.odk.baseapi.request.document.DirectoryCreateRequest;
 import com.odk.basedomain.model.file.DirectoryDO;
 import com.odk.basedomain.repository.file.DirectoryRepository;
 import com.odk.basemanager.deal.document.DirectoryManager;
-import com.odk.basemanager.dto.document.DirectoryCreateDTO;
+import com.odk.baseutil.dto.document.DirSearchDTO;
+import com.odk.baseutil.dto.document.DirectoryCreateDTO;
 import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.entity.DirectoryEntity;
 import com.odk.baseutil.enums.BizScene;
+import com.odk.baseutil.enums.DirSearchTypeEnum;
 import com.odk.baseutil.enums.DirectoryTypeEnum;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -102,6 +106,46 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
             @Override
             protected List<DirectoryEntity> doProcess(Object args) {
                 return directoryManager.directoryTree();
+            }
+
+            @Override
+            protected List<DirectoryEntity> convertResult(List<DirectoryEntity> result) {
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public ServiceResponse<List<DirectoryEntity>> directorySearch(DirSearchRequest dirSearchRequest) {
+        return super.queryProcess(BizScene.DIRECTORY_SEARCH, dirSearchRequest, new QueryApiCallBack<List<DirectoryEntity>, List<DirectoryEntity>>() {
+
+            @Override
+            protected void checkParams(Object request) {
+                AssertUtil.notNull(dirSearchRequest, BizErrorCode.PARAM_ILLEGAL);
+                AssertUtil.notNull(DirSearchTypeEnum.getByCode(dirSearchRequest.getSearchType()), BizErrorCode.PARAM_ILLEGAL, "搜索类型异常");
+            }
+
+            @Override
+            protected Object convert(Object request) {
+
+                DirSearchDTO dirSearchDTO = new DirSearchDTO();
+                BeanUtils.copyProperties(dirSearchRequest, dirSearchDTO);
+
+
+                return dirSearchDTO;
+            }
+
+
+            @Override
+            protected List<DirectoryEntity> doProcess(Object args) {
+
+                DirSearchDTO dirSearchDTO = (DirSearchDTO) args;
+
+                if (StringUtils.isEmpty(dirSearchRequest.getKeyword())) {
+                    return directoryManager.directoryTree();
+                } else {
+                    return directoryManager.directorySearch(dirSearchDTO);
+                }
             }
 
             @Override

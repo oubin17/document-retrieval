@@ -4,10 +4,11 @@ import com.odk.base.enums.common.CommonStatusEnum;
 import com.odk.base.exception.AssertUtil;
 import com.odk.base.exception.BizErrorCode;
 import com.odk.basedomain.domain.inter.DirectoryDomain;
+import com.odk.baseutil.dto.document.DirSearchDTO;
 import com.odk.baseutil.entity.DirectoryEntity;
 import com.odk.basedomain.model.file.DirectoryDO;
 import com.odk.basedomain.repository.file.DirectoryRepository;
-import com.odk.basemanager.dto.document.DirectoryCreateDTO;
+import com.odk.baseutil.dto.document.DirectoryCreateDTO;
 import com.odk.baseutil.enums.DirectoryTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -73,6 +74,17 @@ public class DirectoryManager {
     public List<DirectoryEntity> directoryTree() {
         return this.directoryDomain.directoryTree();
     }
+
+    /**
+     * 根据关键字返回目录
+     *
+     * @param dirSearchDTO
+     * @return
+     */
+    public List<DirectoryEntity> directorySearch(DirSearchDTO dirSearchDTO) {
+        return this.directoryDomain.searchByFileContent(dirSearchDTO);
+    }
+
 
     @Autowired
     public void setDirectoryDomain(DirectoryDomain directoryDomain) {

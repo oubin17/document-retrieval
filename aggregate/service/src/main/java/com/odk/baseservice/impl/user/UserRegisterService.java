@@ -9,7 +9,7 @@ import com.odk.baseapi.inter.user.UserRegisterApi;
 import com.odk.baseapi.request.UserRegisterRequest;
 import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.basemanager.deal.user.UserRegisterManager;
-import com.odk.basemanager.dto.UserRegisterDTO;
+import com.odk.baseutil.dto.UserRegisterDTO;
 import com.odk.baseutil.enums.BizScene;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;

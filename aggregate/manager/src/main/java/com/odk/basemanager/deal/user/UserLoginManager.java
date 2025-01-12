@@ -10,7 +10,7 @@ import com.odk.basedomain.repository.user.UserAccessTokenRepository;
 import com.odk.basedomain.repository.user.UserBaseRepository;
 import com.odk.basedomain.repository.user.UserIdentificationRepository;
 import com.odk.basemanager.deal.password.PasswordManager;
-import com.odk.basemanager.dto.UserLoginDTO;
+import com.odk.baseutil.dto.UserLoginDTO;
 import com.odk.baseutil.entity.UserEntity;
 import com.odk.baseutil.constants.UserInfoConstants;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -11,7 +11,7 @@ import com.odk.baseapi.vo.DocumentVO;
 import com.odk.baseapi.vo.FileVO;
 import com.odk.basedomain.model.es.DocumentDO;
 import com.odk.basemanager.deal.document.DocumentManager;
-import com.odk.basemanager.dto.document.DocUploadDTO;
+import com.odk.baseutil.dto.document.DocUploadDTO;
 import com.odk.baseutil.entity.FileEntity;
 import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.enums.BizScene;

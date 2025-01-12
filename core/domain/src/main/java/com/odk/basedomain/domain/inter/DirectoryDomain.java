@@ -1,5 +1,6 @@
 package com.odk.basedomain.domain.inter;
 
+import com.odk.baseutil.dto.document.DirSearchDTO;
 import com.odk.baseutil.entity.DirectoryEntity;
 
 import java.util.List;
@@ -19,4 +20,13 @@ public interface DirectoryDomain {
      * @return
      */
     List<DirectoryEntity> directoryTree();
+
+    /**
+     * 根据文件内容匹配
+     *
+     * @param dirSearchDTO
+     * @return
+     */
+    List<DirectoryEntity> searchByFileContent(DirSearchDTO dirSearchDTO);
+
 }

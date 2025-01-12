@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * FileRepository
  *
@@ -25,6 +27,14 @@ public interface FileRepository extends JpaRepository<FileDO, String> {
      * @return
      */
     Page<FileDO> findByFileNameLike(String fileName, Pageable pageable);
+
+    /**
+     * 查询文件名称
+     *
+     * @param fileName
+     * @return
+     */
+    List<FileDO> findByFileNameLike(String fileName);
 
     /**
      * 更新文件状态

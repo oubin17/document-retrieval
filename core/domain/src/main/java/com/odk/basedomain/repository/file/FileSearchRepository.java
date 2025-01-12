@@ -28,6 +28,15 @@ public interface FileSearchRepository extends JpaRepository<FileSearchDO, String
     List<FileSearchDO> findByCondition(@Param("keyword") String keyword, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
 
     /**
+     * 根据关键字查找
+     *
+     * @param keyword
+     * @return
+     */
+    @Query(value = "select * from t_file_search WHERE MATCH(file_name, content) AGAINST(:keyword IN NATURAL LANGUAGE MODE)", nativeQuery = true)
+    List<FileSearchDO> findByCondition(@Param("keyword") String keyword);
+
+    /**
      * 匹配数量
      *
      * @param keyword
