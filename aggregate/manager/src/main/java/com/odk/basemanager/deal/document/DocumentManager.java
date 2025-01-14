@@ -7,7 +7,6 @@ import com.odk.base.exception.BizException;
 import com.odk.base.idgenerator.SnowflakeIdUtil;
 import com.odk.base.util.FileUtil;
 import com.odk.base.vo.response.PageResponse;
-import com.odk.baseutil.entity.FileEntity;
 import com.odk.basedomain.model.es.DocumentDO;
 import com.odk.basedomain.model.file.DirectoryDO;
 import com.odk.basedomain.model.file.FileDO;
@@ -17,12 +16,15 @@ import com.odk.basedomain.repository.file.DirectoryRepository;
 import com.odk.basedomain.repository.file.FileRepository;
 import com.odk.basedomain.repository.file.FileSearchRepository;
 import com.odk.baseutil.dto.document.DocUploadDTO;
+import com.odk.baseutil.entity.FileEntity;
 import com.odk.baseutil.enums.DirectoryTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -30,6 +32,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,6 +63,27 @@ public class DocumentManager {
     @Value("${file.input.path}")
     private String baseFilePath;
 
+    public Resource downloadDoc(String fileId) {
+        Optional<FileDO> byId = fileRepository.findById(fileId);
+        AssertUtil.isTrue(byId.isPresent(), BizErrorCode.PARAM_ILLEGAL, "文件不存在");
+        // 文件路径
+        try {
+            // 文件路径
+            Path filePath = Paths.get(byId.get().getFullFilePath()).toAbsolutePath().normalize();
+            Resource resource = new UrlResource(filePath.toUri());
+
+            // 检查文件是否存在
+            if (resource.exists() || resource.isReadable()) {
+                return resource;
+            } else {
+                throw new BizException("文件不存在或不可读");
+            }
+        } catch (MalformedURLException e) {
+            log.error("文件路径错误：", e);
+            throw new BizException("文件路径错误");
+        }
+
+    }
 
     public String uploadDoc(DocUploadDTO uploadDTO) {
         //检查文件夹是否合法

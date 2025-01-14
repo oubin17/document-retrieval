@@ -6,6 +6,7 @@ import com.odk.baseapi.request.document.DocumentSearchRequest;
 import com.odk.baseapi.request.document.DocumentUploadRequest;
 import com.odk.baseapi.vo.DocumentVO;
 import com.odk.baseapi.vo.FileVO;
+import org.springframework.core.io.Resource;
 
 /**
  * DocumentApi
@@ -23,6 +24,14 @@ public interface DocumentApi {
      * @return
      */
     ServiceResponse<String> uploadDoc(DocumentUploadRequest docUploadRequest);
+
+    /**
+     * 下载文件
+     *
+     * @param fileId
+     * @return
+     */
+    ServiceResponse<Resource> downloadDoc(String fileId);
 
     /**
      * 根据id删除文档

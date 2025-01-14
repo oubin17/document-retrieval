@@ -8,6 +8,7 @@ import com.odk.baseweb.interceptor.CorsInterceptor;
 import com.odk.baseweb.interceptor.tracer.TracerIdInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -21,6 +22,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("*") // 允许所有域名
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .exposedHeaders("Content-Disposition"); // 暴露 Content-Disposition 响应头
+    }
+
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

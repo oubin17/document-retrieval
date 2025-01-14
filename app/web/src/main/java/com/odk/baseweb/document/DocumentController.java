@@ -7,10 +7,17 @@ import com.odk.baseapi.request.document.DocumentSearchRequest;
 import com.odk.baseapi.request.document.DocumentUploadRequest;
 import com.odk.baseapi.vo.FileVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 /**
  * DocumentController
@@ -53,6 +60,36 @@ public class DocumentController {
         request.setFileSize(file.getSize() / 1024 + "K");
         request.setDirId(dirId);
         return documentApi.uploadDoc(request);
+    }
+
+    /**
+     * 文件下载
+     *
+     * @param fileId
+     * @return
+     */
+    @GetMapping("/download")
+    public ResponseEntity<Resource> downloadDocument(@RequestParam("fileId") String fileId) {
+        ServiceResponse<Resource> resourceServiceResponse = documentApi.downloadDoc(fileId);
+        // 使用正则表达式去掉 _数字_ 部分
+        String cleanedFileName = Objects.requireNonNull(resourceServiceResponse.getData().getFilename()).replaceAll("^_\\d+_", "");
+        String encodedFileName = URLEncoder.encode(Objects.requireNonNull(cleanedFileName), StandardCharsets.UTF_8);
+        // 设置响应头
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename*=UTF-8\"" + encodedFileName + "\"");
+        String contentType;
+        if (cleanedFileName.endsWith(".pdf")) {
+            contentType = MediaType.APPLICATION_PDF_VALUE;
+        } else if (cleanedFileName.endsWith(".doc") || cleanedFileName.endsWith(".docx")) {
+            contentType = "application/msword";
+        } else {
+            contentType = MediaType.APPLICATION_OCTET_STREAM_VALUE; // 默认二进制流
+        }
+        headers.add(HttpHeaders.CONTENT_TYPE, contentType);
+        // 返回 ResponseEntity
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(resourceServiceResponse.getData());
     }
 
     @DeleteMapping()

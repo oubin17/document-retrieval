@@ -17,6 +17,7 @@ import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.enums.BizScene;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -63,6 +64,28 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
             @Override
             protected String convertResult(String docId) {
                 return docId;
+            }
+
+        });
+    }
+
+    @Override
+    public ServiceResponse<Resource> downloadDoc(String fileId) {
+        return super.queryProcess(BizScene.DOC_DOWNLOAD, fileId, new QueryApiCallBack<Resource, Resource>() {
+
+            @Override
+            protected void checkParams(Object request) {
+                AssertUtil.notNull(fileId, BizErrorCode.PARAM_ILLEGAL);
+            }
+
+            @Override
+            protected Resource doProcess(Object args) {
+                return documentManager.downloadDoc(fileId);
+            }
+
+            @Override
+            protected Resource convertResult(Resource resource) {
+                return resource;
             }
 
         });

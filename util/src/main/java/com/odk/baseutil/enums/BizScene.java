@@ -27,6 +27,8 @@ public enum BizScene {
     //文件相关
     DOC_UPLOAD("DOC_UPLOAD", "文件上传"),
 
+    DOC_DOWNLOAD("DOC_DOWNLOAD", "文件下载"),
+
     DOC_DELETE("DOC_DELETE", "文件上传"),
 
     DOC_SEARCH("DOC_SEARCH", "文件列表查询"),
