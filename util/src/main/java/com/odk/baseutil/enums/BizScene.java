@@ -44,6 +44,10 @@ public enum BizScene {
     DIRECTORY_SEARCH("DIRECTORY_SEARCH", "文件检索"),
 
 
+    //组织
+    USER_ORGANIZATION("USER_ORGANIZATION", "用户组织"),
+
+
 
 
     ;

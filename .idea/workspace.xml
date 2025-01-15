@@ -5,13 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad473350-2da0-4de6-adca-9bf3dd873395" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/org/OrganizationManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/org/OrganizationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/org/OrganizationApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/organization/OrganizationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/OrganizationDomainImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/inter/OrganizationDomain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/org/OrganizationDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/org/UserOrganizationDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/org/OrganizationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/org/UserOrganizationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/entity/OrganizationEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/entity/UserOrganizationEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/OrganizationTypeEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DocumentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DocumentApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DocumentApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/DocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/CorsInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/CorsInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/auth/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/auth/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/vo/PermissionVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/vo/PermissionVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/vo/UserRoleVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/vo/UserRoleVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/permission/RolePermissionRelDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/permission/RolePermissionRelDO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/BizScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/BizScene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -115,7 +125,9 @@
       <workItem from="1736491743017" duration="10154000" />
       <workItem from="1736767871837" duration="2381000" />
       <workItem from="1736816211772" duration="10000" />
-      <workItem from="1736857108210" duration="7363000" />
+      <workItem from="1736857108210" duration="8178000" />
+      <workItem from="1736907743354" duration="11058000" />
+      <workItem from="1736943147718" duration="304000" />
     </task>
     <servers />
   </component>
@@ -132,5 +144,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/OrganizationDomainImpl.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
