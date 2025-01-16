@@ -2,6 +2,10 @@ package com.odk.baseutil.entity;
 
 import lombok.Data;
 
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.Set;
+
 /**
  * UserEntity
  *
@@ -10,8 +14,10 @@ import lombok.Data;
  * @author: oubin on 2024/11/4
  */
 @Data
-public class UserEntity {
+public class UserEntity implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = -7881070936696286996L;
     /**
      * 用户id
      */
@@ -33,6 +39,16 @@ public class UserEntity {
      * {@link com.odk.base.enums.user.UserStatusEnum}
      */
     private String userStatus;
+
+    /**
+     * 用户所关联的组织
+     */
+    private Set<String> orgIds;
+
+    /**
+     * 查询用户组织树
+     */
+    private OrganizationEntity organizationTree;
 
 
 }

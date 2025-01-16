@@ -43,4 +43,9 @@ public class DocUploadDTO extends DTO {
      */
     private String dirId;
 
+    /**
+     * 文件所属组织ID
+     */
+    private String orgId;
+
 }

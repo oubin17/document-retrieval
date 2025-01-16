@@ -1,6 +1,7 @@
 package com.odk.baseweb.permission;
 
 import cn.dev33.satoken.annotation.SaCheckRole;
+import cn.dev33.satoken.stp.StpUtil;
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.permission.PermissionApi;
 import com.odk.baseapi.request.role.RoleAddRequest;
@@ -24,6 +25,17 @@ public class PermissionController {
 
     public PermissionController(PermissionApi permissionApi) {
         this.permissionApi = permissionApi;
+    }
+
+
+    /**
+     * 查询当前用户角色权限
+     *
+     * @return
+     */
+    @GetMapping("/info")
+    public ServiceResponse<PermissionQueryResponse> currentUserPermission() {
+        return permissionApi.userPermission(StpUtil.getLoginIdAsString());
     }
 
     /**

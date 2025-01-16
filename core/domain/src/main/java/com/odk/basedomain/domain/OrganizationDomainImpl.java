@@ -1,11 +1,16 @@
 package com.odk.basedomain.domain;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.google.common.collect.Lists;
+import com.odk.base.exception.AssertUtil;
+import com.odk.base.exception.BizErrorCode;
 import com.odk.basedomain.domain.inter.OrganizationDomain;
 import com.odk.basedomain.model.org.OrganizationDO;
+import com.odk.basedomain.model.org.UserOrganizationDO;
 import com.odk.basedomain.repository.org.OrganizationRepository;
 import com.odk.basedomain.repository.org.UserOrganizationRepository;
 import com.odk.baseutil.entity.OrganizationEntity;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,6 +50,42 @@ public class OrganizationDomainImpl implements OrganizationDomain {
         }
 
         return new OrganizationEntity();
+    }
+
+
+    @Override
+    public Set<String> getUsersByOrgId(String orgId) {
+        //判断用户是否有组织权限，用户状态正常，组织状态正常，有绑定关系
+        Set<String> userOrg = this.userOrganizationRepository.findUserOrg(StpUtil.getLoginIdAsString());
+        AssertUtil.isTrue(userOrg.contains(orgId), BizErrorCode.PARAM_ILLEGAL, "暂无该组织查询权限");
+        List<UserOrganizationDO> byOrgId = this.userOrganizationRepository.findByOrgId(orgId);
+        return byOrgId.stream().map(UserOrganizationDO::getUserId).collect(Collectors.toSet());
+
+    }
+
+    @Override
+    public Set<String> getOrgIdsByUserId(String userId) {
+        //判断用户是否有组织权限，用户状态正常，组织状态正常，有绑定关系
+        return this.userOrganizationRepository.findUserOrg(userId);
+    }
+
+    @Override
+    public boolean checkOrgPermission(Set<String> orgIds, String userId) {
+        return false;
+    }
+
+
+    @Override
+    public String checkAndReturnCurrentOrgId(String orgId, String userId) {
+        //用户id对应组织
+        Set<String> userOrg = this.userOrganizationRepository.findUserOrg(userId);
+        if (StringUtils.isEmpty(orgId)) {
+            AssertUtil.isTrue(userOrg.size() == 1, BizErrorCode.PARAM_ILLEGAL, "用户关联多个组织");
+            return String.valueOf(userOrg.toArray()[0]);
+        } else {
+            AssertUtil.isTrue(userOrg.contains(orgId), BizErrorCode.PARAM_ILLEGAL, "无组织权限");
+            return orgId;
+        }
     }
 
     // 递归遍历目录树，匹配文件节点的名称

@@ -51,4 +51,9 @@ public class FileSearchDO extends BaseDO {
     @Column(name = "content")
     private String content;
 
+    /**
+     * 组织id
+     */
+    @Column(name = "org_id")
+    private String orgId;
 }

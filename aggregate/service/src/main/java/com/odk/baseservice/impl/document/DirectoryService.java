@@ -1,5 +1,6 @@
 package com.odk.baseservice.impl.document;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.odk.base.enums.common.CommonStatusEnum;
 import com.odk.base.exception.AssertUtil;
 import com.odk.base.exception.BizErrorCode;
@@ -7,12 +8,13 @@ import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.document.DirectoryApi;
 import com.odk.baseapi.request.document.DirSearchRequest;
 import com.odk.baseapi.request.document.DirectoryCreateRequest;
+import com.odk.basedomain.domain.inter.OrganizationDomain;
 import com.odk.basedomain.model.file.DirectoryDO;
 import com.odk.basedomain.repository.file.DirectoryRepository;
 import com.odk.basemanager.deal.document.DirectoryManager;
+import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.dto.document.DirSearchDTO;
 import com.odk.baseutil.dto.document.DirectoryCreateDTO;
-import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.entity.DirectoryEntity;
 import com.odk.baseutil.enums.BizScene;
 import com.odk.baseutil.enums.DirSearchTypeEnum;
@@ -23,7 +25,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * DirectoryService
@@ -38,6 +39,8 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
     private DirectoryRepository directoryRepository;
 
     private DirectoryManager directoryManager;
+
+    private OrganizationDomain organizationDomain;
 
     @Override
     public ServiceResponse<String> createDirectory(DirectoryCreateRequest directoryCreateRequest) {
@@ -84,8 +87,6 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
             @Override
             protected void checkParams(Object request) {
                 AssertUtil.notNull(request, BizErrorCode.PARAM_ILLEGAL);
-                Optional<DirectoryDO> byId = directoryRepository.findById(dirId);
-                AssertUtil.isTrue(byId.isPresent(), BizErrorCode.PARAM_ILLEGAL, "节点不存在");
             }
 
             @Override
@@ -101,11 +102,18 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
     }
 
     @Override
-    public ServiceResponse<List<DirectoryEntity>> directoryTree() {
-        return super.queryProcess(BizScene.DIRECTORY_TREE, null, new QueryApiCallBack<List<DirectoryEntity>, List<DirectoryEntity>>() {
+    public ServiceResponse<List<DirectoryEntity>> directoryTree(String orgId) {
+        return super.queryProcess(BizScene.DIRECTORY_TREE, orgId, new QueryApiCallBack<List<DirectoryEntity>, List<DirectoryEntity>>() {
+
+            @Override
+            protected Object convert(Object request) {
+                return organizationDomain.checkAndReturnCurrentOrgId(orgId, StpUtil.getLoginIdAsString());
+            }
+
             @Override
             protected List<DirectoryEntity> doProcess(Object args) {
-                return directoryManager.directoryTree();
+
+                return directoryManager.directoryTree((String) args);
             }
 
             @Override
@@ -127,22 +135,20 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
 
             @Override
             protected Object convert(Object request) {
-
+                String currentOrgId = organizationDomain.checkAndReturnCurrentOrgId(dirSearchRequest.getOrgId(), StpUtil.getLoginIdAsString());
+                dirSearchRequest.setOrgId(currentOrgId);
                 DirSearchDTO dirSearchDTO = new DirSearchDTO();
                 BeanUtils.copyProperties(dirSearchRequest, dirSearchDTO);
-
-
                 return dirSearchDTO;
             }
 
 
             @Override
             protected List<DirectoryEntity> doProcess(Object args) {
-
                 DirSearchDTO dirSearchDTO = (DirSearchDTO) args;
 
                 if (StringUtils.isEmpty(dirSearchRequest.getKeyword())) {
-                    return directoryManager.directoryTree();
+                    return directoryManager.directoryTree(dirSearchRequest.getOrgId());
                 } else {
                     return directoryManager.directorySearch(dirSearchDTO);
                 }
@@ -163,5 +169,10 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
     @Autowired
     public void setDirectoryManager(DirectoryManager directoryManager) {
         this.directoryManager = directoryManager;
+    }
+
+    @Autowired
+    public void setOrganizationDomain(OrganizationDomain organizationDomain) {
+        this.organizationDomain = organizationDomain;
     }
 }

@@ -33,8 +33,8 @@ public interface FileSearchRepository extends JpaRepository<FileSearchDO, String
      * @param keyword
      * @return
      */
-    @Query(value = "select * from t_file_search WHERE MATCH(file_name, content) AGAINST(:keyword IN NATURAL LANGUAGE MODE)", nativeQuery = true)
-    List<FileSearchDO> findByCondition(@Param("keyword") String keyword);
+    @Query(value = "select * from t_file_search WHERE MATCH(file_name, content) AGAINST(:keyword IN NATURAL LANGUAGE MODE) AND org_id = :orgId", nativeQuery = true)
+    List<FileSearchDO> findByCondition(@Param("keyword") String keyword, @Param("orgId") String orgId);
 
     /**
      * 匹配数量

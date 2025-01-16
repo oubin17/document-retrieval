@@ -1,20 +1,15 @@
 package com.odk.basemanager.deal.user;
 
-import com.odk.base.enums.user.UserStatusEnum;
-import com.odk.base.exception.BizErrorCode;
-import com.odk.base.exception.BizException;
+import com.odk.basedomain.domain.inter.OrganizationDomain;
+import com.odk.basedomain.domain.inter.UserDomain;
 import com.odk.basedomain.model.user.UserAccessTokenDO;
-import com.odk.basedomain.model.user.UserBaseDO;
 import com.odk.basedomain.repository.user.UserAccessTokenRepository;
 import com.odk.basedomain.repository.user.UserBaseRepository;
 import com.odk.baseutil.entity.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * UserQueryManager
@@ -32,6 +27,10 @@ public class UserQueryManager {
 
     private UserAccessTokenRepository accessTokenRepository;
 
+    private OrganizationDomain organizationDomain;
+
+    private UserDomain userDomain;
+
     /**
      * 根据userId查找用户
      *
@@ -39,14 +38,7 @@ public class UserQueryManager {
      * @return
      */
     public UserEntity queryByUserId(String userId) {
-        Optional<UserBaseDO> userBaseDO = baseRepository.findById(userId);
-        if (userBaseDO.isEmpty()) {
-            logger.error("找不到用户，用户ID={}", userId);
-            return null;
-        }
-        UserEntity userEntity = new UserEntity();
-        BeanUtils.copyProperties(userBaseDO, userEntity);
-        return userEntity;
+        return this.userDomain.getByUserId(userId);
     }
 
     /**
@@ -56,18 +48,7 @@ public class UserQueryManager {
      * @return
      */
     public UserEntity queryByUserIdAndCheck(String userId) {
-        Optional<UserBaseDO> userBaseDO = baseRepository.findById(userId);
-        if (userBaseDO.isEmpty()) {
-            logger.error("找不到用户，用户ID={}", userId);
-            return null;
-        }
-        if (UserStatusEnum.NORMAL != UserStatusEnum.getByCode(userBaseDO.get().getUserStatus())) {
-            throw new BizException(BizErrorCode.USER_STATUS_ERROR);
-        }
-        UserEntity userEntity = new UserEntity();
-        BeanUtils.copyProperties(userBaseDO.get(), userEntity);
-        userEntity.setUserId(userBaseDO.get().getId());
-        return userEntity;
+       return this.userDomain.getByUserIdAndCheck(userId);
     }
 
     /**
@@ -94,5 +75,15 @@ public class UserQueryManager {
     @Autowired
     public void setAccessTokenRepository(UserAccessTokenRepository accessTokenRepository) {
         this.accessTokenRepository = accessTokenRepository;
+    }
+
+    @Autowired
+    public void setOrganizationDomain(OrganizationDomain organizationDomain) {
+        this.organizationDomain = organizationDomain;
+    }
+
+    @Autowired
+    public void setUserDomain(UserDomain userDomain) {
+        this.userDomain = userDomain;
     }
 }

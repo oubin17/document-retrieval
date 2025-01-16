@@ -24,4 +24,9 @@ public class DirectoryCreateDTO extends DTO {
      * 父节点ID
      */
     private String parentId;
+
+    /**
+     * 组织ID：如果不传，默认是当前用户所属组织
+     */
+    private String orgId;
 }

@@ -1,5 +1,6 @@
 package com.odk.basemanager.deal.document;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.odk.base.enums.common.CommonStatusEnum;
 import com.odk.base.exception.AssertUtil;
 import com.odk.base.exception.BizErrorCode;
@@ -7,6 +8,7 @@ import com.odk.base.exception.BizException;
 import com.odk.base.idgenerator.SnowflakeIdUtil;
 import com.odk.base.util.FileUtil;
 import com.odk.base.vo.response.PageResponse;
+import com.odk.basedomain.domain.inter.OrganizationDomain;
 import com.odk.basedomain.model.es.DocumentDO;
 import com.odk.basedomain.model.file.DirectoryDO;
 import com.odk.basedomain.model.file.FileDO;
@@ -37,6 +39,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * DocumentManager
@@ -57,6 +60,8 @@ public class DocumentManager {
 
     private DirectoryRepository directoryRepository;
 
+    private OrganizationDomain organizationDomain;
+
 
     private TransactionTemplate transactionTemplate;
 
@@ -66,6 +71,10 @@ public class DocumentManager {
     public Resource downloadDoc(String fileId) {
         Optional<FileDO> byId = fileRepository.findById(fileId);
         AssertUtil.isTrue(byId.isPresent(), BizErrorCode.PARAM_ILLEGAL, "文件不存在");
+
+        Set<String> orgIdsByUserId = organizationDomain.getOrgIdsByUserId(StpUtil.getLoginIdAsString());
+        AssertUtil.isTrue(orgIdsByUserId.contains(byId.get().getOrgId()), BizErrorCode.PERMISSION_DENY);
+
         // 文件路径
         try {
             // 文件路径
@@ -110,6 +119,7 @@ public class DocumentManager {
                 fileDO.setFileSize(uploadDTO.getFileSize());
                 fileDO.setFullFilePath(fullFilaPath);
                 fileDO.setStatus(CommonStatusEnum.NORMAL.getCode());
+                fileDO.setOrgId(uploadDTO.getOrgId());
                 fileRepository.save(fileDO);
 
                 //4.保存文件内容到db
@@ -117,6 +127,7 @@ public class DocumentManager {
                 fileSearchDO.setFileId(mainId);
                 fileSearchDO.setFileName(uploadDTO.getFileName());
                 fileSearchDO.setContent(docContents);
+                fileSearchDO.setOrgId(uploadDTO.getOrgId());
                 fileSearchRepository.save(fileSearchDO);
 
                 //5.创建叶子结点
@@ -126,6 +137,7 @@ public class DocumentManager {
                 leafDirectory.setFileId(mainId);
                 leafDirectory.setParentId(uploadDTO.getDirId());
                 leafDirectory.setStatus(CommonStatusEnum.NORMAL.getCode());
+                leafDirectory.setOrgId(uploadDTO.getOrgId());
                 directoryRepository.save(leafDirectory);
 
             } catch (BizException bizException) {
@@ -145,6 +157,9 @@ public class DocumentManager {
     public Boolean deleteDoc(String fileId) {
         Optional<FileDO> byId = fileRepository.findById(fileId);
         AssertUtil.isTrue(byId.isPresent(), BizErrorCode.PARAM_ILLEGAL, "文件不存在");
+        Set<String> orgIdsByUserId = organizationDomain.getOrgIdsByUserId(StpUtil.getLoginIdAsString());
+        AssertUtil.isTrue(orgIdsByUserId.contains(byId.get().getOrgId()), BizErrorCode.PERMISSION_DENY);
+
         FileUtil.deleteFile(byId.get().getFullFilePath());
         transactionTemplate.executeWithoutResult(transactionStatus -> {
             fileSearchRepository.deleteByFileId(fileId);
@@ -203,5 +218,10 @@ public class DocumentManager {
     @Autowired
     public void setDirectoryRepository(DirectoryRepository directoryRepository) {
         this.directoryRepository = directoryRepository;
+    }
+
+    @Autowired
+    public void setOrganizationDomain(OrganizationDomain organizationDomain) {
+        this.organizationDomain = organizationDomain;
     }
 }

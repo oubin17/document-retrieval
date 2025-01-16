@@ -31,4 +31,9 @@ public class DirSearchRequest extends BaseRequest {
      * 2-文件名称
      */
     private String searchType;
+
+    /**
+     * 查询当前组织下的文件
+     */
+    private String orgId;
 }

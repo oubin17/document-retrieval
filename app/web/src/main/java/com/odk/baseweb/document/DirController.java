@@ -41,7 +41,7 @@ public class DirController {
      * @return
      */
     @DeleteMapping("/delete")
-    public ServiceResponse<Boolean> queryByFileName(@RequestParam("dirId") String dirId) {
+    public ServiceResponse<Boolean> deleteByFileName(@RequestParam("dirId") String dirId) {
         return directoryApi.deleteDirectory(dirId);
     }
 
@@ -51,8 +51,8 @@ public class DirController {
      * @return
      */
     @GetMapping("/tree")
-    public ServiceResponse<List<DirectoryEntity>> directoryTree() {
-        return directoryApi.directoryTree();
+    public ServiceResponse<List<DirectoryEntity>> directoryTree(@RequestParam(value = "orgId", required = false) String orgId) {
+        return directoryApi.directoryTree(orgId);
     }
 
     /**

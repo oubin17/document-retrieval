@@ -62,4 +62,10 @@ public class FileDO extends BaseDO {
      */
     @Column(name = "status")
     private String status;
+
+    /**
+     * 组织id
+     */
+    @Column(name = "org_id")
+    private String orgId;
 }

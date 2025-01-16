@@ -37,7 +37,7 @@ public interface DirectoryApi {
      *
      * @return
      */
-    ServiceResponse<List<DirectoryEntity>> directoryTree();
+    ServiceResponse<List<DirectoryEntity>> directoryTree(String orgId);
 
     /**
      * 文本内容

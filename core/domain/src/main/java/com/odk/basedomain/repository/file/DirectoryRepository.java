@@ -20,11 +20,13 @@ public interface DirectoryRepository extends JpaRepository<DirectoryDO, String> 
 
     /**
      * 根据父节点查找，按创建时间降序
+     * 只查当前组织内的用户上传的文件
+     *
      * @param parentId
      * @return
      */
-    @Query(value = "select * from ( select t1.*, t2.status as file_status from t_directory t1 left join t_file t2 on t1.file_id = t2.id where t1.parent_id = :parentId and t1.status = '0' ) t3 where (t3.file_status is null or t3.file_status = '0' ) order by t3.create_time desc", nativeQuery = true)
-    List<DirectoryDO> findCurrentLevel(@Param("parentId") String parentId);
+    @Query(value = "select * from ( select t1.*, t2.status as file_status from t_directory t1 left join t_file t2 on t1.file_id = t2.id where t1.parent_id = :parentId and t1.org_id = :orgId and t1.status = '0' ) t3 where (t3.file_status is null or t3.file_status = '0' ) order by t3.create_time desc", nativeQuery = true)
+    List<DirectoryDO> findCurrentLevel(@Param("parentId") String parentId, @Param("orgId")  String orgId);
 
     /**
      * 根据父节点查找，按创建时间降序

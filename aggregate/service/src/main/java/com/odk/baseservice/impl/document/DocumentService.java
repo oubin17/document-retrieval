@@ -1,5 +1,6 @@
 package com.odk.baseservice.impl.document;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.odk.base.exception.AssertUtil;
 import com.odk.base.exception.BizErrorCode;
 import com.odk.base.vo.response.PageResponse;
@@ -9,6 +10,7 @@ import com.odk.baseapi.request.document.DocumentSearchRequest;
 import com.odk.baseapi.request.document.DocumentUploadRequest;
 import com.odk.baseapi.vo.DocumentVO;
 import com.odk.baseapi.vo.FileVO;
+import com.odk.basedomain.domain.inter.OrganizationDomain;
 import com.odk.basedomain.model.es.DocumentDO;
 import com.odk.basemanager.deal.document.DocumentManager;
 import com.odk.baseutil.dto.document.DocUploadDTO;
@@ -35,6 +37,8 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
 
     private DocumentManager documentManager;
 
+    private OrganizationDomain organizationDomain;
+
     @Override
     public ServiceResponse<String> uploadDoc(DocumentUploadRequest docUploadRequest) {
         return super.queryProcess(BizScene.DOC_UPLOAD, docUploadRequest, new QueryApiCallBack<String, String>() {
@@ -50,6 +54,8 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
                     //如果传空，默认在根目录上传
                     docUploadRequest.setDirId("0");
                 }
+                String currentOrgId = organizationDomain.checkAndReturnCurrentOrgId(docUploadRequest.getOrgId(), StpUtil.getLoginIdAsString());
+                docUploadRequest.setOrgId(currentOrgId);
                 DocUploadDTO uploadDTO = new DocUploadDTO();
                 BeanUtils.copyProperties(docUploadRequest, uploadDTO);
                 return uploadDTO;
@@ -153,5 +159,10 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
     @Autowired
     public void setDocumentManager(DocumentManager documentManager) {
         this.documentManager = documentManager;
+    }
+
+    @Autowired
+    public void setOrganizationDomain(OrganizationDomain organizationDomain) {
+        this.organizationDomain = organizationDomain;
     }
 }

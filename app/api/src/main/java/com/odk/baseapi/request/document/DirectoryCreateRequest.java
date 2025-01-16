@@ -20,7 +20,18 @@ public class DirectoryCreateRequest extends BaseRequest {
     @Serial
     private static final long serialVersionUID = 6741602495551747804L;
 
+    /**
+     * 文件夹
+     */
     private String directoryName;
 
+    /**
+     * 父节点id
+     */
     private String parentId;
+
+    /**
+     * 组织ID：如果不传，默认是当前用户所属组织
+     */
+    private String orgId;
 }

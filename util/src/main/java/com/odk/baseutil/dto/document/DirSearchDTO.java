@@ -26,4 +26,9 @@ public class DirSearchDTO extends DTO {
      * 2-文件名称
      */
     private String searchType;
+
+    /**
+     * 组织id
+     */
+    private String orgId;
 }

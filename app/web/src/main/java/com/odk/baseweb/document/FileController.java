@@ -1,5 +1,7 @@
 package com.odk.baseweb.document;
 
+import com.odk.base.exception.BizErrorCode;
+import com.odk.base.exception.BizException;
 import com.odk.base.vo.response.PageResponse;
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.document.DocumentApi;
@@ -28,7 +30,7 @@ import java.util.Objects;
  */
 @RestController
 @RequestMapping("/doc")
-public class DocumentController {
+public class FileController {
 
     private DocumentApi documentApi;
 
@@ -71,6 +73,9 @@ public class DocumentController {
     @GetMapping("/download")
     public ResponseEntity<Resource> downloadDocument(@RequestParam("fileId") String fileId) {
         ServiceResponse<Resource> resourceServiceResponse = documentApi.downloadDoc(fileId);
+        if (!resourceServiceResponse.isSuccess()) {
+            throw new BizException(BizErrorCode.getByCode(resourceServiceResponse.getErrorCode()), resourceServiceResponse.getErrorContext());
+        }
         // 使用正则表达式去掉 _数字_ 部分
         String cleanedFileName = Objects.requireNonNull(resourceServiceResponse.getData().getFilename()).replaceAll("^_\\d+_", "");
         String encodedFileName = URLEncoder.encode(Objects.requireNonNull(cleanedFileName), StandardCharsets.UTF_8);

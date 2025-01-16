@@ -1,8 +1,8 @@
 package com.odk.basemanager.deal.user;
 
 import com.alibaba.fastjson.JSONObject;
+import com.odk.base.enums.common.CommonStatusEnum;
 import com.odk.base.enums.user.IdentificationTypeEnum;
-import com.odk.base.enums.user.UserStatusEnum;
 import com.odk.base.enums.user.UserTypeEnum;
 import com.odk.base.exception.AssertUtil;
 import com.odk.base.exception.BizErrorCode;
@@ -80,7 +80,7 @@ public class UserRegisterManager {
     private String addUserBase(UserRegisterDTO userRegisterDTO) {
         UserBaseDO userBase = new UserBaseDO();
         userBase.setUserType(UserTypeEnum.INDIVIDUAL.getCode());
-        userBase.setUserStatus(UserStatusEnum.NORMAL.getCode());
+        userBase.setUserStatus(CommonStatusEnum.NORMAL.getCode());
         userBase.setUserName(userRegisterDTO.getUserName());
         UserBaseDO save = userBaseRepository.save(userBase);
         return save.getId();

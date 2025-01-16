@@ -19,7 +19,7 @@ public interface DirectoryDomain {
      *
      * @return
      */
-    List<DirectoryEntity> directoryTree();
+    List<DirectoryEntity> directoryTree(String orgId);
 
     /**
      * 根据文件内容匹配

@@ -3,6 +3,7 @@ package com.odk.basedomain.domain;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.odk.basedomain.domain.inter.DirectoryDomain;
+import com.odk.basedomain.domain.inter.OrganizationDomain;
 import com.odk.basedomain.model.file.DirectoryDO;
 import com.odk.basedomain.model.file.FileDO;
 import com.odk.basedomain.model.file.FileSearchDO;
@@ -38,35 +39,35 @@ public class DirectoryDomainImpl implements DirectoryDomain {
 
     private FileSearchRepository fileSearchRepository;
 
+    private OrganizationDomain organizationDomain;
+
     private FileRepository fileRepository;
 
     @Override
-    public List<DirectoryEntity> directoryTree() {
-        return buildDirectoryTree(ROOT_NODE);
+    public List<DirectoryEntity> directoryTree(String orgId) {
+        return buildDirectoryTree(ROOT_NODE, orgId);
     }
-
 
     @Override
     public List<DirectoryEntity> searchByFileContent(DirSearchDTO dirSearchDTO) {
-        DirSearchTypeEnum byCode = DirSearchTypeEnum.getByCode(dirSearchDTO.getSearchType());
+        DirSearchTypeEnum searchType = DirSearchTypeEnum.getByCode(dirSearchDTO.getSearchType());
         List<FileSearchDO> byCondition;
         List<FileDO> fileDOList;
         Set<String> fileIds = Sets.newHashSet();
 
-        if (byCode == DirSearchTypeEnum.CONTENT) {
-            byCondition = fileSearchRepository.findByCondition(dirSearchDTO.getKeyword());
+        if (searchType == DirSearchTypeEnum.CONTENT) {
+            byCondition = fileSearchRepository.findByCondition(dirSearchDTO.getKeyword(), dirSearchDTO.getOrgId());
             fileIds = byCondition.stream().map(FileSearchDO::getFileId).collect(Collectors.toSet());
-        } else if (byCode == DirSearchTypeEnum.FILE_NAME) {
+        } else if (searchType == DirSearchTypeEnum.FILE_NAME) {
             String fileName = "%" + dirSearchDTO.getKeyword() + "%";
-            fileDOList = fileRepository.findByFileNameLike(fileName);
+            fileDOList = fileRepository.findByFileNameLikeAndOrgId(fileName, dirSearchDTO.getOrgId());
             fileIds = fileDOList.stream().map(FileDO::getId).collect(Collectors.toSet());
-
         }
         if (CollectionUtils.isEmpty(fileIds)) {
             return Lists.newArrayList();
         }
         List<DirectoryEntity> resultEntities = Lists.newArrayList();
-        List<DirectoryEntity> fullDirectoryEntities = directoryTree();
+        List<DirectoryEntity> fullDirectoryEntities = directoryTree(dirSearchDTO.getOrgId());
 
         for (DirectoryEntity directoryEntity : fullDirectoryEntities) {
             DirectoryEntity directoryEntity1 = searchTree(directoryEntity, fileIds);
@@ -131,8 +132,8 @@ public class DirectoryDomainImpl implements DirectoryDomain {
      * @param parentId
      * @return
      */
-    private List<DirectoryEntity> buildDirectoryTree(String parentId) {
-        List<DirectoryDO> rootDirectories = this.directoryRepository.findCurrentLevel(parentId);
+    private List<DirectoryEntity> buildDirectoryTree(String parentId, String orgId) {
+        List<DirectoryDO> rootDirectories = this.directoryRepository.findCurrentLevel(parentId, orgId);
         if (CollectionUtils.isEmpty(rootDirectories)) {
             return Lists.newArrayList();
         }
@@ -140,7 +141,7 @@ public class DirectoryDomainImpl implements DirectoryDomain {
         for (DirectoryEntity entity : directoryEntities) {
             if (DirectoryTypeEnum.FOLDER.getCode().equals(entity.getDirectoryType())) {
                 //如果该节点是文件夹，递归下一级
-                entity.setChildDirectories(buildDirectoryTree(entity.getId()));
+                entity.setChildDirectories(buildDirectoryTree(entity.getId(), orgId));
             }
         }
         return directoryEntities;
@@ -173,5 +174,10 @@ public class DirectoryDomainImpl implements DirectoryDomain {
     @Autowired
     public void setFileRepository(FileRepository fileRepository) {
         this.fileRepository = fileRepository;
+    }
+
+    @Autowired
+    public void setOrganizationDomain(OrganizationDomain organizationDomain) {
+        this.organizationDomain = organizationDomain;
     }
 }

@@ -46,4 +46,9 @@ public class DocumentUploadRequest extends BaseRequest {
      */
     private String dirId;
 
+    /**
+     * 文件所属组织ID
+     */
+    private String orgId;
+
 }

@@ -32,9 +32,10 @@ public interface FileRepository extends JpaRepository<FileDO, String> {
      * 查询文件名称
      *
      * @param fileName
+     * @param orgId
      * @return
      */
-    List<FileDO> findByFileNameLike(String fileName);
+    List<FileDO> findByFileNameLikeAndOrgId(String fileName,String orgId);
 
     /**
      * 更新文件状态
