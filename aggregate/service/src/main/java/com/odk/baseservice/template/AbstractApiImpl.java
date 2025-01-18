@@ -1,5 +1,6 @@
 package com.odk.baseservice.template;
 
+import cn.dev33.satoken.stp.StpUtil;
 import com.alibaba.fastjson.JSON;
 import com.odk.base.exception.AssertUtil;
 import com.odk.base.exception.BizErrorCode;
@@ -47,7 +48,8 @@ public class AbstractApiImpl extends AbstractApi {
      */
     protected <T, R> ServiceResponse<R> executeProcess(BizScene bizScene, Object object, CallBack<T, R> callBack) {
         long startTime = System.currentTimeMillis();
-        log.info(buildRequestDigestLog(bizScene, object, ServiceContextHolder.getUserId()));
+
+        log.info(buildRequestDigestLog(bizScene, object, StpUtil.getLoginIdAsString()));
         ServiceResponse<R> response = null;
         try {
             //1. 初始化上下文

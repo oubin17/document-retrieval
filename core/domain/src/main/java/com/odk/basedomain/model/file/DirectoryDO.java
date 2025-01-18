@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.Comment;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serial;
@@ -28,11 +27,6 @@ public class DirectoryDO extends BaseDO {
 
     @Serial
     private static final long serialVersionUID = 2776986163176656341L;
-
-    @Id
-    @GeneratedValue(generator = "user-uuid")
-    @GenericGenerator(name = "user-uuid", strategy = "com.odk.basedomain.idgenerate.CustomIDGenerator")
-    private String id;
 
     @Column(name = "directory_name")
     @Comment("文件夹名称")

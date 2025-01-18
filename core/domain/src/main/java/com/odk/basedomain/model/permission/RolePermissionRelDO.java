@@ -1,10 +1,12 @@
 package com.odk.basedomain.model.permission;
 
 import com.odk.base.dos.BaseDO;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Index;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serial;
 
@@ -25,11 +27,6 @@ public class RolePermissionRelDO extends BaseDO {
 
     @Serial
     private static final long serialVersionUID = 6132591681856111018L;
-
-    @Id
-    @GeneratedValue(generator = "user-uuid")
-    @GenericGenerator(name = "user-uuid", strategy = "com.odk.basedomain.idgenerate.CustomIDGenerator")
-    private String id;
 
     /**
      * 角色id

@@ -1,10 +1,12 @@
 package com.odk.basedomain.model.file;
 
 import com.odk.base.dos.BaseDO;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serial;
@@ -27,11 +29,6 @@ public class FileSearchDO extends BaseDO {
 
     @Serial
     private static final long serialVersionUID = 7924807458967180888L;
-
-    @Id
-    @GeneratedValue(generator = "user-uuid")
-    @GenericGenerator(name = "user-uuid", strategy = "com.odk.basedomain.idgenerate.CustomIDGenerator")
-    private String id;
 
     /**
      * 文件id
