@@ -28,7 +28,7 @@ public class UserQueryService extends AbstractApiImpl implements UserQueryApi {
     @Override
     public ServiceResponse<UserEntity> queryUserByUserId(String userId) {
 
-        return super.queryProcess(BizScene.USER_QUERY, userId, new QueryApiCallBack<UserEntity, UserEntity>() {
+        return super.executeProcess(BizScene.USER_QUERY, userId, new CallBack<UserEntity, UserEntity>() {
 
             @Override
             protected void checkParams(Object request) {
@@ -50,7 +50,7 @@ public class UserQueryService extends AbstractApiImpl implements UserQueryApi {
 
     @Override
     public ServiceResponse<UserEntity> queryCurrentUser() {
-        return super.queryProcess(BizScene.USER_QUERY, null, new QueryApiCallBack<UserEntity, UserEntity>() {
+        return super.executeProcess(BizScene.USER_QUERY, null, new CallBack<UserEntity, UserEntity>() {
 
             @Override
             protected void checkParams(Object request) {
@@ -73,7 +73,7 @@ public class UserQueryService extends AbstractApiImpl implements UserQueryApi {
     @Override
     public ServiceResponse<UserEntity> queryUserByLoginId(UserQueryRequest userQueryRequest) {
 
-        return super.queryProcess(BizScene.USER_QUERY, userQueryRequest, new QueryApiCallBack<UserEntity, UserEntity>() {
+        return super.executeProcess(BizScene.USER_QUERY, userQueryRequest, new CallBack<UserEntity, UserEntity>() {
             @Override
             protected void checkParams(Object request) {
                 UserQueryRequest queryRequest = (UserQueryRequest) request;

@@ -41,7 +41,7 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
 
     @Override
     public ServiceResponse<String> uploadDoc(DocumentUploadRequest docUploadRequest) {
-        return super.queryProcess(BizScene.DOC_UPLOAD, docUploadRequest, new QueryApiCallBack<String, String>() {
+        return super.executeProcess(BizScene.DOC_UPLOAD, docUploadRequest, new CallBack<String, String>() {
 
             @Override
             protected void checkParams(Object request) {
@@ -77,7 +77,7 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
 
     @Override
     public ServiceResponse<Resource> downloadDoc(String fileId) {
-        return super.queryProcess(BizScene.DOC_DOWNLOAD, fileId, new QueryApiCallBack<Resource, Resource>() {
+        return super.executeProcess(BizScene.DOC_DOWNLOAD, fileId, new CallBack<Resource, Resource>() {
 
             @Override
             protected void checkParams(Object request) {
@@ -99,7 +99,7 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
 
     @Override
     public ServiceResponse<Boolean> deleteDoc(String docId) {
-        return super.queryProcess(BizScene.DOC_DELETE, docId, new QueryApiCallBack<Boolean, Boolean>() {
+        return super.executeProcess(BizScene.DOC_DELETE, docId, new CallBack<Boolean, Boolean>() {
 
             @Override
             protected void checkParams(Object request) {
@@ -121,7 +121,7 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
 
     @Override
     public ServiceResponse<PageResponse<FileVO>> searchByCondition(DocumentSearchRequest searchRequest) {
-        return super.queryProcess(BizScene.DOC_SEARCH, searchRequest, new QueryApiCallBack<PageResponse<FileEntity>, PageResponse<FileVO>>() {
+        return super.executeProcess(BizScene.DOC_SEARCH, searchRequest, new CallBack<PageResponse<FileEntity>, PageResponse<FileVO>>() {
 
             @Override
             protected void checkParams(Object request) {

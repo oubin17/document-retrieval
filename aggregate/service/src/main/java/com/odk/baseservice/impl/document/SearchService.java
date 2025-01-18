@@ -33,7 +33,7 @@ public class SearchService extends AbstractApiImpl implements SearchApi {
 
     @Override
     public ServiceResponse<PageResponse<DocumentVO>> search(SearchRequest searchRequest) {
-        return super.queryProcess(BizScene.SEARCH, searchRequest, new QueryApiCallBack<PageResponse<SearchEntity>, PageResponse<DocumentVO>>() {
+        return super.executeProcess(BizScene.SEARCH, searchRequest, new CallBack<PageResponse<SearchEntity>, PageResponse<DocumentVO>>() {
 
             @Override
             protected void checkParams(Object request) {

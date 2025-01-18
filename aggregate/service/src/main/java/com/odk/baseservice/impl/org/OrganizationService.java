@@ -23,7 +23,7 @@ public class OrganizationService extends AbstractApiImpl implements Organization
 
     @Override
     public ServiceResponse<OrganizationEntity> getUserOrganization() {
-        return super.queryProcess(BizScene.USER_ORGANIZATION, null, new QueryApiCallBack<OrganizationEntity, OrganizationEntity>() {
+        return super.executeProcess(BizScene.USER_ORGANIZATION, null, new CallBack<OrganizationEntity, OrganizationEntity>() {
             @Override
             protected OrganizationEntity doProcess(Object args) {
                 return organizationManager.getCurrentUserEntity();

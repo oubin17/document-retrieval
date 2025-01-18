@@ -58,10 +58,10 @@ public class UserLoginManager {
         return userEntity;
     }
 
-    public Boolean userLogout(String userId) {
-        Optional<UserBaseDO> byUserId = baseRepository.findById(userId);
+    public Boolean userLogout() {
+        Optional<UserBaseDO> byUserId = baseRepository.findById(StpUtil.getLoginIdAsString());
         AssertUtil.isTrue(byUserId.isPresent(), BizErrorCode.USER_NOT_EXIST, "用户ID不存在");
-        AssertUtil.isTrue(byUserId.get().getId().equals(StpUtil.getLoginIdAsString()), BizErrorCode.TOKEN_UNMATCHED);
+        StpUtil.logout();
         return true;
     }
 

@@ -44,7 +44,7 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
 
     @Override
     public ServiceResponse<String> createDirectory(DirectoryCreateRequest directoryCreateRequest) {
-        return super.queryProcess(BizScene.DIRECTORY_CREATE, directoryCreateRequest, new QueryApiCallBack<String, String>() {
+        return super.executeProcess(BizScene.DIRECTORY_CREATE, directoryCreateRequest, new CallBack<String, String>() {
 
             @Override
             protected void checkParams(Object request) {
@@ -82,7 +82,7 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
 
     @Override
     public ServiceResponse<Boolean> deleteDirectory(String dirId) {
-        return super.queryProcess(BizScene.DIRECTORY_DELETE, dirId, new QueryApiCallBack<Boolean, Boolean>() {
+        return super.executeProcess(BizScene.DIRECTORY_DELETE, dirId, new CallBack<Boolean, Boolean>() {
 
             @Override
             protected void checkParams(Object request) {
@@ -103,7 +103,7 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
 
     @Override
     public ServiceResponse<List<DirectoryEntity>> directoryTree(String orgId) {
-        return super.queryProcess(BizScene.DIRECTORY_TREE, orgId, new QueryApiCallBack<List<DirectoryEntity>, List<DirectoryEntity>>() {
+        return super.executeProcess(BizScene.DIRECTORY_TREE, orgId, new CallBack<List<DirectoryEntity>, List<DirectoryEntity>>() {
 
             @Override
             protected Object convert(Object request) {
@@ -125,7 +125,7 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
 
     @Override
     public ServiceResponse<List<DirectoryEntity>> directorySearch(DirSearchRequest dirSearchRequest) {
-        return super.queryProcess(BizScene.DIRECTORY_SEARCH, dirSearchRequest, new QueryApiCallBack<List<DirectoryEntity>, List<DirectoryEntity>>() {
+        return super.executeProcess(BizScene.DIRECTORY_SEARCH, dirSearchRequest, new CallBack<List<DirectoryEntity>, List<DirectoryEntity>>() {
 
             @Override
             protected void checkParams(Object request) {

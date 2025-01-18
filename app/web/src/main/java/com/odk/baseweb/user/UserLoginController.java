@@ -28,8 +28,8 @@ public class UserLoginController {
     }
 
     @PostMapping("logout")
-    public ServiceResponse<Boolean> userLogout(@RequestBody UserLogoutRequest logoutRequest) {
-        return userLoginApi.userLogout(logoutRequest);
+    public ServiceResponse<Boolean> userLogout() {
+        return userLoginApi.userLogout();
     }
 
     @Autowired
