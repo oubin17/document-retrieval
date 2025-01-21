@@ -54,7 +54,7 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
 
             @Override
             protected Object convert(Object request) {
-                if (directoryCreateRequest.getParentId() == null) {
+                if (StringUtils.isEmpty(directoryCreateRequest.getParentId())) {
                     //如果传空，默认在根目录上传
                     directoryCreateRequest.setParentId("0");
                 } else {
@@ -70,7 +70,7 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
             @Override
             protected String doProcess(Object args) {
                 DirectoryCreateDTO request = (DirectoryCreateDTO) args;
-               return directoryManager.createDirectory(request);
+                return directoryManager.createDirectory(request);
             }
 
             @Override

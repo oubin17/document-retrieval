@@ -4,7 +4,6 @@ import cn.dev33.satoken.interceptor.SaInterceptor;
 import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.stp.StpUtil;
 import com.odk.baseutil.enums.InnerRoleEnum;
-import com.odk.baseweb.interceptor.CorsInterceptor;
 import com.odk.baseweb.interceptor.tracer.TracerIdInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
@@ -26,7 +25,7 @@ public class WebConfig implements WebMvcConfigurer {
     /**
      * 如果不指定端口，默认http -> 80   https -> 443
      */
-    private static final String[] allowedOrigins = new String[]{"https://localhost", "http://localhost"} ;
+    public static final String[] allowedOrigins = new String[]{"http://localhost:5173", "http://127.0.0.1:5173", "http://localhost"} ;
 
     /**
      * 配置跨域请求规则
@@ -37,7 +36,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins(allowedOrigins) // 允许访问的域名域名
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")//允许的http方法
+                .allowedMethods("GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")//允许的http方法
                 .allowedHeaders("*") // 允许的请求头
                 .allowCredentials(true) // 允许携带凭证（如 cookies）
                 .exposedHeaders("Content-Disposition"); // 暴露 Content-Disposition 响应头
@@ -45,8 +44,6 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // 注册 MyInterceptor 拦截器，拦截所有路径
-        registry.addInterceptor(new CorsInterceptor()).addPathPatterns("/**");
         //trace id
         registry.addInterceptor(new TracerIdInterceptor());
         //注册 Sa-Token 拦截器，打开注解式鉴权功能

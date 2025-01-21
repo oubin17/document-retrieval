@@ -54,13 +54,14 @@ public class FileController {
      * @throws IOException
      */
     @PostMapping("/upload")
-    public ServiceResponse<String> uploadDocument(MultipartFile file, String dirId) throws IOException {
+    public ServiceResponse<String> uploadDocument(MultipartFile file, String dirId, String orgId) throws IOException {
         DocumentUploadRequest request = new DocumentUploadRequest();
         request.setFileInputStream(file.getInputStream());
         request.setFileName(file.getOriginalFilename());
         request.setContentType(file.getContentType());
         request.setFileSize(file.getSize() / 1024 + "K");
         request.setDirId(dirId);
+        request.setOrgId(orgId);
         return documentApi.uploadDoc(request);
     }
 
