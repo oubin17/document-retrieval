@@ -29,11 +29,11 @@ public class DirectoryDO extends BaseDO {
     private static final long serialVersionUID = 2776986163176656341L;
 
     @Column(name = "directory_name")
-    @Comment("文件夹名称")
+    @Comment("目录名称")
     private String directoryName;
 
     /**
-     * 文件夹类型：文件-0、文件夹-1
+     * 目录类型：文件-0、目录-1
      */
     @Column(name = "directory_type")
     private String directoryType;

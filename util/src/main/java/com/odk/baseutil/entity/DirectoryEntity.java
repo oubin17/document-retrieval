@@ -21,12 +21,12 @@ public class DirectoryEntity {
     private String id;
 
     /**
-     * 文件夹名称
+     * 目录名称
      */
     private String directoryName;
 
     /**
-     * 文件夹类型：文件-2、文件夹-1
+     * 目录类型：文件-2、目录-1
      */
     private String directoryType;
 
@@ -46,7 +46,7 @@ public class DirectoryEntity {
     private LocalDateTime createTime;
 
     /**
-     * 子文件夹
+     * 子目录
      */
     private List<DirectoryEntity> childDirectories;
 }

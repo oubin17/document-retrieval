@@ -5,12 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad473350-2da0-4de6-adca-9bf3dd873395" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/auth/CorsFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DirectoryUpdateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/dto/document/DirectoryUpdateDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DirectoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DirectoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DirectoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DirectoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DirectoryApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DirectoryApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DirectoryCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DirectoryCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DocumentUploadRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DocumentUploadRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/DirController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/DirController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/CorsInterceptor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/auth/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/auth/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/permission/PermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/permission/PermissionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/DirectoryDomainImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/DirectoryDomainImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/OrganizationDomainImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/OrganizationDomainImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/file/DirectoryDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/file/DirectoryDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/dto/document/DirectoryCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/dto/document/DirectoryCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/dto/document/DocUploadDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/dto/document/DocUploadDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/entity/DirectoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/entity/DirectoryEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/BizScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/BizScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/DirectoryTypeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/DirectoryTypeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/InnerRoleEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/InnerRoleEnum.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +77,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -122,7 +139,9 @@
       <workItem from="1737015479059" duration="24745000" />
       <workItem from="1737334930191" duration="1408000" />
       <workItem from="1737369938244" duration="5223000" />
-      <workItem from="1737459647251" duration="4043000" />
+      <workItem from="1737459647251" duration="5312000" />
+      <workItem from="1737507192616" duration="9094000" />
+      <workItem from="1737534688523" duration="1184000" />
     </task>
     <servers />
   </component>
@@ -147,16 +166,6 @@
           <url>jar://$MAVEN_REPOSITORY$/com/odk/odk-common-util-base/3.0.2-SNAPSHOT/odk-common-util-base-3.0.2-SNAPSHOT.jar!/com/odk/base/vo/response/ServiceResponse.class</url>
           <line>34</line>
           <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DocumentService.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/OrganizationDomainImpl.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

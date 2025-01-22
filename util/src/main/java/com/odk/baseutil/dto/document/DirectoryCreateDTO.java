@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
 public class DirectoryCreateDTO extends DTO {
 
     /**
-     * 文件夹名称
+     * 目录名称
      */
     private String directoryName;
 

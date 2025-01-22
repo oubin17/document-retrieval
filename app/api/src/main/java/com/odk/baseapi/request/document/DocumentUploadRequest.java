@@ -42,7 +42,7 @@ public class DocumentUploadRequest extends BaseRequest {
     private String fileSize;
 
     /**
-     * 文件夹id
+     * 目录id
      */
     private String dirId;
 

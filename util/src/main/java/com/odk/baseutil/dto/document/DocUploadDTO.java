@@ -39,7 +39,7 @@ public class DocUploadDTO extends DTO {
     private String fileSize;
 
     /**
-     * 文件夹id
+     * 目录id
      */
     private String dirId;
 

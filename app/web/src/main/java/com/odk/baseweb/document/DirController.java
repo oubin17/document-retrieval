@@ -1,9 +1,11 @@
 package com.odk.baseweb.document;
 
+import cn.dev33.satoken.annotation.SaCheckRole;
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.document.DirectoryApi;
 import com.odk.baseapi.request.document.DirSearchRequest;
 import com.odk.baseapi.request.document.DirectoryCreateRequest;
+import com.odk.baseapi.request.document.DirectoryUpdateRequest;
 import com.odk.baseutil.entity.DirectoryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,22 +26,36 @@ public class DirController {
     private DirectoryApi directoryApi;
 
     /**
-     * 创建文件夹
+     * 创建目录
      *
      * @param directoryCreateRequest
      * @return
      */
+    @SaCheckRole(value = {"ADMIN"})
     @PostMapping("/create")
-    public ServiceResponse<String> queryByFileName(@RequestBody DirectoryCreateRequest directoryCreateRequest) {
+    public ServiceResponse<String> createDirectory(@RequestBody DirectoryCreateRequest directoryCreateRequest) {
         return directoryApi.createDirectory(directoryCreateRequest);
     }
 
     /**
-     * 删除文件夹
+     * 更新目录
+     *
+     * @param updateRequest
+     * @return
+     */
+    @SaCheckRole(value = {"ADMIN"})
+    @PostMapping("/update")
+    public ServiceResponse<Boolean> updateDirectory(@RequestBody DirectoryUpdateRequest updateRequest) {
+        return directoryApi.updateDirectory(updateRequest);
+    }
+
+    /**
+     * 删除目录
      *
      * @param dirId
      * @return
      */
+    @SaCheckRole(value = {"ADMIN"})
     @DeleteMapping("/delete")
     public ServiceResponse<Boolean> deleteByFileName(@RequestParam("dirId") String dirId) {
         return directoryApi.deleteDirectory(dirId);

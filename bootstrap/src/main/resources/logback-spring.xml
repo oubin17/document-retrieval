@@ -139,7 +139,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 
     </logger>
 
-    <!-- 指定打印到某个文件夹 -->
+    <!-- 指定打印到某个目录 -->
     <logger name="com.odk.baseservice.template" level="INFO" additivity="true">
         <appender-ref ref="SERVICE-DIGEST-APPENDER"/>
     </logger>

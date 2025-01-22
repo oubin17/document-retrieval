@@ -1,5 +1,6 @@
 package com.odk.baseweb.document;
 
+import cn.dev33.satoken.annotation.SaCheckRole;
 import com.odk.base.exception.BizErrorCode;
 import com.odk.base.exception.BizException;
 import com.odk.base.vo.response.PageResponse;
@@ -53,6 +54,7 @@ public class FileController {
      * @return
      * @throws IOException
      */
+    @SaCheckRole(value = {"ADMIN"})
     @PostMapping("/upload")
     public ServiceResponse<String> uploadDocument(MultipartFile file, String dirId, String orgId) throws IOException {
         DocumentUploadRequest request = new DocumentUploadRequest();

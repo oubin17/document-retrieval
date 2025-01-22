@@ -11,6 +11,7 @@ import com.odk.base.enums.IEnum;
  */
 public enum InnerRoleEnum implements IEnum {
 
+    SUPER_ADMIN("SUPER-ADMIN", "超级管理员"),
     ADMIN("ADMIN", "管理员"),
 
     NORMAL("MEMBER", "会员");

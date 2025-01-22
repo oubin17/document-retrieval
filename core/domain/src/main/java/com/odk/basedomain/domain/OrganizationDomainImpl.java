@@ -134,7 +134,7 @@ public class OrganizationDomainImpl implements OrganizationDomain {
         }
         List<OrganizationEntity> organizationEntities = convertEntity(rootOrganizations);
         for (OrganizationEntity entity : organizationEntities) {
-            //如果该节点是文件夹，递归下一级
+            //如果该节点是目录，递归下一级
             entity.setChildOrganizations(buildDirectoryTree(entity.getId()));
         }
         return organizationEntities;

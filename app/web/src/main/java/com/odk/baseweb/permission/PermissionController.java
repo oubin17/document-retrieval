@@ -1,6 +1,7 @@
 package com.odk.baseweb.permission;
 
 import cn.dev33.satoken.annotation.SaCheckRole;
+import cn.dev33.satoken.annotation.SaMode;
 import cn.dev33.satoken.stp.StpUtil;
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.permission.PermissionApi;
@@ -44,6 +45,7 @@ public class PermissionController {
      * @param userId
      * @return
      */
+    @SaCheckRole(value = {"ADMIN", "SUPER-ADMIN"}, mode = SaMode.OR)
     @GetMapping("/userId")
     public ServiceResponse<PermissionQueryResponse> queryUserPermission(@RequestParam("userId") String userId) {
         return permissionApi.userPermission(userId);
@@ -56,7 +58,7 @@ public class PermissionController {
      * {@link InnerRoleEnum}
      * @return
      */
-    @SaCheckRole(value = {"ADMIN"})
+    @SaCheckRole(value = {"SUPER-ADMIN"})
     @PostMapping("/role/add")
     public ServiceResponse<String> addRole(@RequestBody RoleAddRequest roleAddRequest) {
         return permissionApi.addRole(roleAddRequest);
@@ -68,6 +70,7 @@ public class PermissionController {
      * @param relaRequest
      * @return
      */
+    @SaCheckRole(value = {"SUPER-ADMIN"})
     @PostMapping("/role/rela/add")
     public ServiceResponse<String> addRoleRel(@RequestBody UserRoleRelaRequest relaRequest) {
         return permissionApi.addRoleRela(relaRequest);

@@ -10,6 +10,7 @@ import com.odk.basedomain.model.file.DirectoryDO;
 import com.odk.basedomain.repository.file.DirectoryRepository;
 import com.odk.baseutil.dto.document.DirSearchDTO;
 import com.odk.baseutil.dto.document.DirectoryCreateDTO;
+import com.odk.baseutil.dto.document.DirectoryUpdateDTO;
 import com.odk.baseutil.entity.DirectoryEntity;
 import com.odk.baseutil.enums.DirectoryTypeEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +40,7 @@ public class DirectoryManager {
     private OrganizationDomain organizationDomain;
 
     /**
-     * 创建文件夹
+     * 创建目录
      *
      * @param createDTO
      * @return
@@ -61,9 +62,25 @@ public class DirectoryManager {
     }
 
     /**
-     * 删除文件夹（同时删除子文件夹和文件）
+     * 更新目录
+     *
+     * @param updateDTO
+     * @return
+     */
+    public Boolean updateDirectory(DirectoryUpdateDTO updateDTO) {
+        Optional<DirectoryDO> directoryDOOptional = directoryRepository.findById(updateDTO.getId());
+        AssertUtil.isTrue(directoryDOOptional.isPresent(), BizErrorCode.PARAM_ILLEGAL, "目录不存在");
+        AssertUtil.equal(directoryDOOptional.get().getDirectoryType(), DirectoryTypeEnum.FOLDER.getCode(), BizErrorCode.PARAM_ILLEGAL, "无法更新文件名称");
+        DirectoryDO directoryDO = directoryDOOptional.get();
+        directoryDO.setDirectoryName(updateDTO.getDirectoryName());
+        directoryRepository.save(directoryDO);
+        return true;
+    }
+
+    /**
+     * 删除目录（同时删除子目录和文件）
      * <p>
-     * 这里只删除父文件夹，因为如果父节点删除了，子节点永远不会被查出来
+     * 这里只删除父目录，因为如果父节点删除了，子节点永远不会被查出来
      *
      * @param directoryId
      * @return

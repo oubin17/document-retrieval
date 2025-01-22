@@ -140,7 +140,7 @@ public class DirectoryDomainImpl implements DirectoryDomain {
         List<DirectoryEntity> directoryEntities = convertEntity(rootDirectories);
         for (DirectoryEntity entity : directoryEntities) {
             if (DirectoryTypeEnum.FOLDER.getCode().equals(entity.getDirectoryType())) {
-                //如果该节点是文件夹，递归下一级
+                //如果该节点是目录，递归下一级
                 entity.setChildDirectories(buildDirectoryTree(entity.getId(), orgId));
             }
         }

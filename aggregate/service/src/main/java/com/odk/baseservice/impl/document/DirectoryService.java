@@ -8,6 +8,7 @@ import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.document.DirectoryApi;
 import com.odk.baseapi.request.document.DirSearchRequest;
 import com.odk.baseapi.request.document.DirectoryCreateRequest;
+import com.odk.baseapi.request.document.DirectoryUpdateRequest;
 import com.odk.basedomain.domain.inter.OrganizationDomain;
 import com.odk.basedomain.model.file.DirectoryDO;
 import com.odk.basedomain.repository.file.DirectoryRepository;
@@ -15,6 +16,7 @@ import com.odk.basemanager.deal.document.DirectoryManager;
 import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.dto.document.DirSearchDTO;
 import com.odk.baseutil.dto.document.DirectoryCreateDTO;
+import com.odk.baseutil.dto.document.DirectoryUpdateDTO;
 import com.odk.baseutil.entity.DirectoryEntity;
 import com.odk.baseutil.enums.BizScene;
 import com.odk.baseutil.enums.DirSearchTypeEnum;
@@ -49,7 +51,7 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
             @Override
             protected void checkParams(Object request) {
                 AssertUtil.notNull(request, BizErrorCode.PARAM_ILLEGAL);
-                AssertUtil.isNotEmpty(directoryCreateRequest.getDirectoryName(), BizErrorCode.PARAM_ILLEGAL, "文件夹名称不为空");
+                AssertUtil.isNotEmpty(directoryCreateRequest.getDirectoryName(), BizErrorCode.PARAM_ILLEGAL, "目录名称不为空");
             }
 
             @Override
@@ -75,6 +77,39 @@ public class DirectoryService extends AbstractApiImpl implements DirectoryApi {
 
             @Override
             protected String convertResult(String docId) {
+                return docId;
+            }
+        });
+    }
+
+
+    @Override
+    public ServiceResponse<Boolean> updateDirectory(DirectoryUpdateRequest updateRequest) {
+        return super.executeProcess(BizScene.DIRECTORY_UPDATE, updateRequest, new CallBack<Boolean, Boolean>() {
+
+            @Override
+            protected void checkParams(Object request) {
+                AssertUtil.notNull(request, BizErrorCode.PARAM_ILLEGAL);
+                AssertUtil.isNotEmpty(updateRequest.getId(), BizErrorCode.PARAM_ILLEGAL, "目录ID不为空");
+                AssertUtil.isNotEmpty(updateRequest.getDirectoryName(), BizErrorCode.PARAM_ILLEGAL, "目录名称不为空");
+            }
+
+            @Override
+            protected Object convert(Object request) {
+
+                DirectoryUpdateDTO updateDTO = new DirectoryUpdateDTO();
+                BeanUtils.copyProperties(updateRequest, updateDTO);
+                return updateDTO;
+            }
+
+            @Override
+            protected Boolean doProcess(Object args) {
+                DirectoryUpdateDTO updateDTO = (DirectoryUpdateDTO) args;
+                return directoryManager.updateDirectory(updateDTO);
+            }
+
+            @Override
+            protected Boolean convertResult(Boolean docId) {
                 return docId;
             }
         });

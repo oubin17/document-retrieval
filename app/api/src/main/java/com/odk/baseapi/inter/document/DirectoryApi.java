@@ -3,6 +3,7 @@ package com.odk.baseapi.inter.document;
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.request.document.DirSearchRequest;
 import com.odk.baseapi.request.document.DirectoryCreateRequest;
+import com.odk.baseapi.request.document.DirectoryUpdateRequest;
 import com.odk.baseutil.entity.DirectoryEntity;
 
 import java.util.List;
@@ -17,12 +18,20 @@ import java.util.List;
 public interface DirectoryApi {
 
     /**
-     * 创建文件夹
+     * 创建目录
      *
      * @param directoryCreateRequest
      * @return
      */
     ServiceResponse<String> createDirectory(DirectoryCreateRequest directoryCreateRequest);
+
+    /**
+     * 目录更新
+     * 
+     * @param updateRequest
+     * @return
+     */
+    ServiceResponse<Boolean> updateDirectory(DirectoryUpdateRequest updateRequest);
 
     /**
      * 根据id删除目录

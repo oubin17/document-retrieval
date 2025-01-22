@@ -11,7 +11,7 @@ import com.odk.base.enums.IEnum;
  */
 public enum DirectoryTypeEnum implements IEnum {
 
-    FOLDER("1", "文件夹"),
+    FOLDER("1", "目录"),
 
     FILE("2", "文件");
 

@@ -21,7 +21,7 @@ public class DirectoryCreateRequest extends BaseRequest {
     private static final long serialVersionUID = 6741602495551747804L;
 
     /**
-     * 文件夹
+     * 目录名称
      */
     private String directoryName;
 

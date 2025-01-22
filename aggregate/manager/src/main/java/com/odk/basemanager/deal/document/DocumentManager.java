@@ -95,7 +95,7 @@ public class DocumentManager {
     }
 
     public String uploadDoc(DocUploadDTO uploadDTO) {
-        //检查文件夹是否合法
+        //检查目录是否合法
         if (!StringUtils.equals(uploadDTO.getDirId(), "0")) {
             DirectoryDO directoryDO = directoryRepository.findByIdAndDirectoryTypeAndStatus(uploadDTO.getDirId(), DirectoryTypeEnum.FOLDER.getCode(), CommonStatusEnum.NORMAL.getCode());
             AssertUtil.notNull(directoryDO, BizErrorCode.PARAM_ILLEGAL, "父节点路径非法");
