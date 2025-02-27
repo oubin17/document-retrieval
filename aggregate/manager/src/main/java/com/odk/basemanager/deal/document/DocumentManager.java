@@ -9,11 +9,9 @@ import com.odk.base.idgenerator.SnowflakeIdUtil;
 import com.odk.base.util.FileUtil;
 import com.odk.base.vo.response.PageResponse;
 import com.odk.basedomain.domain.inter.OrganizationDomain;
-import com.odk.basedomain.model.es.DocumentDO;
 import com.odk.basedomain.model.file.DirectoryDO;
 import com.odk.basedomain.model.file.FileDO;
 import com.odk.basedomain.model.file.FileSearchDO;
-import com.odk.basedomain.repository.es.DocumentRepository;
 import com.odk.basedomain.repository.file.DirectoryRepository;
 import com.odk.basedomain.repository.file.FileRepository;
 import com.odk.basedomain.repository.file.FileSearchRepository;
@@ -51,8 +49,6 @@ import java.util.Set;
 @Slf4j
 @Service
 public class DocumentManager {
-
-    private DocumentRepository documentRepository;
 
     private FileRepository fileRepository;
 
@@ -187,17 +183,6 @@ public class DocumentManager {
         }).toList();
         documentEntityPageResponse.setPageList(collect);
         return documentEntityPageResponse;
-    }
-
-
-    public DocumentDO searchById(Long id) {
-        return documentRepository.findById(id).orElse(null);
-    }
-
-
-    @Autowired
-    public void setDocumentRepository(DocumentRepository documentRepository) {
-        this.documentRepository = documentRepository;
     }
 
     @Autowired

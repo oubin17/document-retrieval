@@ -4,7 +4,6 @@ import com.odk.base.vo.response.PageResponse;
 import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.request.document.DocumentSearchRequest;
 import com.odk.baseapi.request.document.DocumentUploadRequest;
-import com.odk.baseapi.vo.DocumentVO;
 import com.odk.baseapi.vo.FileVO;
 import org.springframework.core.io.Resource;
 
@@ -49,7 +48,5 @@ public interface DocumentApi {
      */
     ServiceResponse<PageResponse<FileVO>> searchByCondition(DocumentSearchRequest searchRequest);
 
-
-    ServiceResponse<DocumentVO> searchById(Long id);
 
 }

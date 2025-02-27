@@ -5,29 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad473350-2da0-4de6-adca-9bf3dd873395" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DirectoryUpdateRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/dto/document/DirectoryUpdateDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DirectoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DirectoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/manager/src/main/java/com/odk/basemanager/deal/document/DocumentManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DirectoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DirectoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DirectoryApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DirectoryApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DirectoryCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DirectoryCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DocumentUploadRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/request/document/DocumentUploadRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/DirController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/DirController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/document/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/auth/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/interceptor/auth/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/permission/PermissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/web/src/main/java/com/odk/baseweb/permission/PermissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bootstrap/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/DirectoryDomainImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/DirectoryDomainImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/OrganizationDomainImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/OrganizationDomainImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/file/DirectoryDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/file/DirectoryDO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/dto/document/DirectoryCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/dto/document/DirectoryCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/dto/document/DocUploadDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/dto/document/DocUploadDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/entity/DirectoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/entity/DirectoryEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/BizScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/BizScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/DirectoryTypeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/DirectoryTypeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/InnerRoleEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/util/src/main/java/com/odk/baseutil/enums/InnerRoleEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DocumentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/aggregate/service/src/main/java/com/odk/baseservice/impl/document/DocumentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DocumentApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/src/main/java/com/odk/baseapi/inter/document/DocumentApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/src/main/java/com/odk/basebootstrap/OdkBootstrapApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/src/main/java/com/odk/basebootstrap/OdkBootstrapApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/src/main/resources/application-prod.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/src/main/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/src/main/resources/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bootstrap/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bootstrap/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/SearchDomainImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/domain/SearchDomainImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/es/DocumentDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/model/es/DocumentDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/es/DocumentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/domain/src/main/java/com/odk/basedomain/repository/es/DocumentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +132,15 @@
       <workItem from="1737369938244" duration="5223000" />
       <workItem from="1737459647251" duration="5312000" />
       <workItem from="1737507192616" duration="9094000" />
-      <workItem from="1737534688523" duration="1184000" />
+      <workItem from="1737534688523" duration="2502000" />
+      <workItem from="1738742213809" duration="45000" />
+      <workItem from="1738744807947" duration="925000" />
+      <workItem from="1739198295859" duration="999000" />
+      <workItem from="1739367134847" duration="889000" />
+      <workItem from="1739368038778" duration="608000" />
+      <workItem from="1740310384478" duration="625000" />
+      <workItem from="1740642141401" duration="81000" />
+      <workItem from="1740655337861" duration="1289000" />
     </task>
     <servers />
   </component>
@@ -162,7 +161,7 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/com/odk/odk-common-util-base/3.0.2-SNAPSHOT/odk-common-util-base-3.0.2-SNAPSHOT.jar!/com/odk/base/vo/response/ServiceResponse.class</url>
           <line>34</line>
           <option name="timeStamp" value="9" />

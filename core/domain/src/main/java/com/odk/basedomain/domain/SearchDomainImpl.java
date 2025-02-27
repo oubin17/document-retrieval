@@ -6,7 +6,6 @@ import com.odk.basedomain.model.file.FileSearchDO;
 import com.odk.basedomain.repository.file.FileSearchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.elasticsearch.client.elc.ElasticsearchTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +20,8 @@ import java.util.List;
 @Service
 public class SearchDomainImpl implements SearchDomain {
 
-    @Autowired
-    private ElasticsearchTemplate elasticsearchTemplate;
+//    @Autowired
+//    private ElasticsearchTemplate elasticsearchTemplate;
 
     private FileSearchRepository fileSearchRepository;
 

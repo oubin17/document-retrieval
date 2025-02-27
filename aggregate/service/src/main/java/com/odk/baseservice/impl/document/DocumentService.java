@@ -8,14 +8,12 @@ import com.odk.base.vo.response.ServiceResponse;
 import com.odk.baseapi.inter.document.DocumentApi;
 import com.odk.baseapi.request.document.DocumentSearchRequest;
 import com.odk.baseapi.request.document.DocumentUploadRequest;
-import com.odk.baseapi.vo.DocumentVO;
 import com.odk.baseapi.vo.FileVO;
 import com.odk.basedomain.domain.inter.OrganizationDomain;
-import com.odk.basedomain.model.es.DocumentDO;
 import com.odk.basemanager.deal.document.DocumentManager;
+import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.dto.document.DocUploadDTO;
 import com.odk.baseutil.entity.FileEntity;
-import com.odk.baseservice.template.AbstractApiImpl;
 import com.odk.baseutil.enums.BizScene;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -146,14 +144,6 @@ public class DocumentService extends AbstractApiImpl implements DocumentApi {
             }
 
         });
-    }
-
-    @Override
-    public ServiceResponse<DocumentVO> searchById(Long id) {
-        DocumentDO documentDO = documentManager.searchById(id);
-        DocumentVO documentVO = new DocumentVO();
-        documentVO.setId(documentDO.getId());
-        return ServiceResponse.valueOfSuccess(documentVO);
     }
 
     @Autowired

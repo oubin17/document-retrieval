@@ -3,7 +3,6 @@ package com.odk.basebootstrap;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
@@ -14,7 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //开启审计功能，自动添加时间
 @EnableJpaAuditing
 //es jpa扫描路径
-@EnableElasticsearchRepositories(basePackages = "com.odk.basedomain")
+//@EnableElasticsearchRepositories(basePackages = "com.odk.basedomain")
 public class OdkBootstrapApplication {
 
     public static void main(String[] args) {
