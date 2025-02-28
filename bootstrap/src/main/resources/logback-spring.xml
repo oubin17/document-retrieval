@@ -52,11 +52,11 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>${FILE_LOG_PATTERN}</pattern>
         </layout>
-<!--        <filter class="ch.qos.logback.classic.filter.LevelFilter">-->
-<!--            <level>ERROR</level>-->
-<!--            <onMatch>DENY</onMatch>&lt;!&ndash; 如果命中ERROR就禁止这条日志 &ndash;&gt;-->
-<!--            <onMismatch>ACCEPT</onMismatch>&lt;!&ndash; 如果没有命中就使用这条规则 &ndash;&gt;-->
-<!--        </filter>-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch><!-- 如果命中ERROR就禁止这条日志 -->
+            <onMismatch>ACCEPT</onMismatch><!-- 如果没有命中就使用这条规则 -->
+        </filter>
     </appender>
 
     <!-- 错误日志记录 -->
@@ -155,7 +155,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 
     <!-- 设置Hibernate事务日志级别 -->
     <logger name="org.hibernate.transaction" level="DEBUG" additivity="false">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="SQL-DIGEST-APPENDER" />
     </logger>
 
     <!-- 指定日志主题 -->
