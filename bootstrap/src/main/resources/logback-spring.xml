@@ -173,10 +173,9 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
         <appender-ref ref="ERROR-APPENDER"/>
     </root>
 
-    <!-- 调研如何制定appender [ application Logger]  core service DRM-->
-    <!--    <logger name="com.alipay.ap.bizprod.core.service.component.drm" level="${log_level}" additivity="false">-->
-    <!--        <appender-ref ref="APBIZPROD-CORE-APPENDER-DRM"/>-->
-    <!--        <appender-ref ref="ERROR-APPENDER"/>-->
-    <!--    </logger>-->
+    <root level="error">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
 
 </configuration>
