@@ -74,9 +74,8 @@ public class DocumentManager {
         // 文件路径
         try {
             // 文件路径
-            Path filePath = Paths.get(byId.get().getFullFilePath()).toAbsolutePath().normalize();
+            Path filePath = Paths.get(baseFilePath + byId.get().getFullFilePath()).toAbsolutePath().normalize();
             Resource resource = new UrlResource(filePath.toUri());
-
             // 检查文件是否存在
             if (resource.exists() || resource.isReadable()) {
                 return resource;
@@ -98,6 +97,7 @@ public class DocumentManager {
         }
 
         String mainId = String.valueOf(SnowflakeIdUtil.nextId());
+        String filePath = FileUtil.generateFileName(mainId, uploadDTO.getFileName());
         String fullFilaPath = FileUtil.generateFullFileName(baseFilePath, mainId, uploadDTO.getFileName());
         FileUtil.checkAndCreateFilePath(baseFilePath);
         transactionTemplate.executeWithoutResult(transactionStatus -> {
@@ -113,7 +113,7 @@ public class DocumentManager {
                 fileDO.setFileName(uploadDTO.getFileName());
                 fileDO.setContentType(uploadDTO.getContentType());
                 fileDO.setFileSize(uploadDTO.getFileSize());
-                fileDO.setFullFilePath(fullFilaPath);
+                fileDO.setFullFilePath(filePath);
                 fileDO.setStatus(CommonStatusEnum.NORMAL.getCode());
                 fileDO.setOrgId(uploadDTO.getOrgId());
                 fileRepository.save(fileDO);
@@ -155,8 +155,7 @@ public class DocumentManager {
         AssertUtil.isTrue(byId.isPresent(), BizErrorCode.PARAM_ILLEGAL, "文件不存在");
         Set<String> orgIdsByUserId = organizationDomain.getOrgIdsByUserId(StpUtil.getLoginIdAsString());
         AssertUtil.isTrue(orgIdsByUserId.contains(byId.get().getOrgId()), BizErrorCode.PERMISSION_DENY);
-
-        FileUtil.deleteFile(byId.get().getFullFilePath());
+        FileUtil.deleteFile(baseFilePath + byId.get().getFullFilePath());
         transactionTemplate.executeWithoutResult(transactionStatus -> {
             fileSearchRepository.deleteByFileId(fileId);
             //文件配置信息软删除
