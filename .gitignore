@@ -34,4 +34,4 @@ build/
 .vscode/
 
 ### prod ###
-# *-prod.properties
+*-prod.properties
