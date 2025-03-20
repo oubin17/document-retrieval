@@ -9,6 +9,11 @@
     <remote-repository>
       <option name="id" value="xyzq" />
       <option name="name" value="xyzq-nexus" />
+      <option name="url" value="http://10.56.48.135:8081/nexus/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="xyzq" />
+      <option name="name" value="xyzq-nexus" />
       <option name="url" value="http://192.20.103.234:8081/nexus/content/groups/public/" />
     </remote-repository>
     <remote-repository>

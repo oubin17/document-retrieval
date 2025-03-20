@@ -54,6 +54,22 @@
             <scope>provided</scope>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>com.odk</groupId>-->
+<!--            <artifactId>redis-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>com.redis.om</groupId>
+            <artifactId>redis-om-spring</artifactId>
+            <version>0.8.7</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-redisearch</artifactId>-->
+<!--        </dependency>-->
+
     </dependencies>
 
 </project>

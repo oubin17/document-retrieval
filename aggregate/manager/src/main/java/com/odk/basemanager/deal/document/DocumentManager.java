@@ -8,10 +8,12 @@ import com.odk.base.exception.BizException;
 import com.odk.base.idgenerator.SnowflakeIdUtil;
 import com.odk.base.util.FileUtil;
 import com.odk.base.vo.response.PageResponse;
+import com.odk.basedomain.domain.inter.DocumentRedisSearchDomain;
 import com.odk.basedomain.domain.inter.OrganizationDomain;
 import com.odk.basedomain.model.file.DirectoryDO;
 import com.odk.basedomain.model.file.FileDO;
 import com.odk.basedomain.model.file.FileSearchDO;
+import com.odk.redis.RedisSearchDO;
 import com.odk.basedomain.repository.file.DirectoryRepository;
 import com.odk.basedomain.repository.file.FileRepository;
 import com.odk.basedomain.repository.file.FileSearchRepository;
@@ -57,6 +59,8 @@ public class DocumentManager {
     private DirectoryRepository directoryRepository;
 
     private OrganizationDomain organizationDomain;
+
+    private DocumentRedisSearchDomain documentRedisSearchDomain;
 
 
     private TransactionTemplate transactionTemplate;
@@ -136,6 +140,13 @@ public class DocumentManager {
                 leafDirectory.setOrgId(uploadDTO.getOrgId());
                 directoryRepository.save(leafDirectory);
 
+
+                RedisSearchDO redisSearchDO = new RedisSearchDO();
+                redisSearchDO.setId(mainId);
+                redisSearchDO.setFileName(uploadDTO.getFileName());
+                redisSearchDO.setContent(docContents);
+                this.documentRedisSearchDomain.save(redisSearchDO);
+
             } catch (BizException bizException) {
                 FileUtil.deleteFile(fullFilaPath);
                 throw bizException;
@@ -207,5 +218,10 @@ public class DocumentManager {
     @Autowired
     public void setOrganizationDomain(OrganizationDomain organizationDomain) {
         this.organizationDomain = organizationDomain;
+    }
+
+    @Autowired
+    public void setDocumentRedisSearchDomain(DocumentRedisSearchDomain documentRedisSearchDomain) {
+        this.documentRedisSearchDomain = documentRedisSearchDomain;
     }
 }
